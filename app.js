@@ -10,7 +10,7 @@ discordjs.on("ready", function() {
 
 
 discordjs.on('message', function(msg){
-  if (msg == "$KNAWLEDGE") {
+  if (msg == "$knowledge") {
     msg.member.voiceChannel.join()
     .then(function(connection){
       connection.playFile('./himg.mp3')
@@ -32,6 +32,20 @@ discordjs.on('message', function(msg){
       connection.playFile('./fullthing.mp3')
     setTimeout(function(){
       msg.member.voiceChannel.leave();}, 5000);
+    });
+  } else if (msg == "$KNAWLEDGE") {
+    msg.member.voiceChannel.join()
+    .then(function(connection){
+      connection.playFile('./garaaaage.mp3')
+    setTimeout(function(){
+      msg.member.voiceChannel.leave();}, 3000);
+    });
+  } else if (msg =="$DREARS") {
+    msg.member.voiceChannel.join()
+    .then(function(connection){
+      connection.playFile('./drears.mp3')
+    setTimeout(function(){
+      msg.member.voiceChannel.leave();}, 3000);
     });
   }
 });
