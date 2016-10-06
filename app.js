@@ -30,13 +30,6 @@ discordjs.on('message', function(msg){
       setTimeout(function(){
         msg.member.voiceChannel.leave();}, 200000);
       });
-    } else if (msg == "$PYLONS"){
-      msg.member.voiceChannel.join()
-      .then(function(connection){
-        connection.playFile('./fullthing.mp3')
-      setTimeout(function(){
-        msg.member.voiceChannel.leave();}, 5000);
-      });
     } else if (msg == "$KNAWLEDGE") {
       console.log("knawledge was called");
       msg.member.voiceChannel.join()
