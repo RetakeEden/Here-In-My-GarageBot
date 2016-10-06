@@ -55,7 +55,8 @@ discordjs.on('message', function(msg){
     }
   } else {
     msg.channel.sendMessage("I can't tell you about my self-help if you don't join a voice channel, "+ msg.author.username + "!")
-    console.log("user had no voice channel")
+    console.log("user had no voice channel");
+    return "no voice channel";
   }
 });
 
