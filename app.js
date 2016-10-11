@@ -47,6 +47,12 @@ discordjs.on('message', function(msg){
       });
     } else if (umsg == "TAI PLS GO"){
       msg.member.voiceChannel.leave();
+    } else if (umsg == "TAI CLEAN") {
+      getChannelLogs(msg.channel || msg.member.channel, 25, before, function(err, del){
+        deleteMessages(del, function(err){
+          if (err) console.log(err);
+        })
+      });
     }
   } else {
     if (recent){
