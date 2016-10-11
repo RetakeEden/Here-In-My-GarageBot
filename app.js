@@ -11,7 +11,8 @@ discordjs.on("ready", function() {
 
 
 discordjs.on('message', function(msg){
-  var umsg = msg.toUpperCase();
+  var smsg = msg.toString()
+  var umsg = smsg.toUpperCase();
   if(msg.member.voiceChannel){
     if (umsg == "$KNOWLEDGE") {
       console.log("knowledge was called")
