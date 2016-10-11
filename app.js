@@ -11,8 +11,8 @@ discordjs.on("ready", function() {
 
 
 discordjs.on('message', function(msg){
-  discordjs.getMessage(msg.channel, msg.id)
-  .then(function(grabbed){
+  // discordjs.getMessage(msg.channel, msg.id)
+  // .then(function(grabbed){
     var smsg = msg.toString()
     var umsg = smsg.toUpperCase();
     if(msg.member.voiceChannel){
@@ -73,7 +73,7 @@ discordjs.on('message', function(msg){
         recent = true;
       }
     }
-  })
+  // })
 });
 
 
