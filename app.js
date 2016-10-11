@@ -11,9 +11,9 @@ discordjs.on("ready", function() {
 
 
 discordjs.on('message', function(msg){
-  msg = msg.toUpperCase();
+  var umsg = msg.toUpperCase();
   if(msg.member.voiceChannel){
-    if (msg == "$KNOWLEDGE") {
+    if (umsg == "$KNOWLEDGE") {
       console.log("knowledge was called")
       msg.member.voiceChannel.join()
       .then(function(connection){
@@ -22,11 +22,11 @@ discordjs.on('message', function(msg){
       setTimeout(function(){
         msg.member.voiceChannel.leave();}, 5000);
       });
-    } else if (msg == "HI TAI!") {
+    } else if (umsg == "HI TAI!") {
       msg.channel.sendMessage("Hello "+msg.author.username + ". Have you seen my 47 lambourghinis??");
       recent = false;
       console.log("Hi was called");
-    } else if (msg == "$FULLTHING"){
+    } else if (umsg == "$FULLTHING"){
       console.log("fullthing was called");
       msg.member.voiceChannel.join()
       .then(function(connection){
@@ -35,7 +35,7 @@ discordjs.on('message', function(msg){
       setTimeout(function(){
         msg.member.voiceChannel.leave();}, 200000);
       });
-    } else if (msg == "$KNAWLEDGE") {
+    } else if (umsg == "$KNAWLEDGE") {
       console.log("knawledge was called");
       msg.member.voiceChannel.join()
       .then(function(connection){
@@ -44,7 +44,7 @@ discordjs.on('message', function(msg){
       setTimeout(function(){
         msg.member.voiceChannel.leave();}, 3000);
       });
-    } else if (msg == "TAI PLS GO"){
+    } else if (umsg == "TAI PLS GO"){
       msg.member.voiceChannel.leave();
     }
   } else {
