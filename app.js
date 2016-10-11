@@ -22,18 +22,14 @@ discordjs.on('message', function(msg){
         .then(function(connection){
           connection.playFile('./himg.mp3')
           recent = true;
-          discordjs.deleteMessage(grabbed, 200, function(){
-            console.log('message deleted');
-          });
+          msg.delete([2000]);
         setTimeout(function(){
           msg.member.voiceChannel.leave();}, 5000);
         });
       } else if (umsg == "HI TAI!") {
         msg.channel.sendMessage("Hello "+msg.author.username + ". Have you seen my 47 lambourghinis??");
         recent = false;
-        discordjs.deleteMessage(grabbed, 3000, function(){
-          console.log('message deleted');
-        });
+        msg.delete([2000]);
         console.log("Hi was called");
       } else if (umsg == "$FULLTHING"){
         console.log("fullthing was called");
@@ -41,9 +37,7 @@ discordjs.on('message', function(msg){
         .then(function(connection){
           connection.playFile('./fullthing.mp3')
           recent = false;
-          discordjs.deleteMessage(grabbed, 200, function(){
-            console.log('message deleted');
-          });
+          msg.delete([2000]);
         setTimeout(function(){
           msg.member.voiceChannel.leave();}, 200000);
         });
@@ -53,17 +47,13 @@ discordjs.on('message', function(msg){
         .then(function(connection){
           connection.playFile('./garaaaage.mp3')
           recent = false;
-          discordjs.deleteMessage(grabbed, 200, function(){
-            console.log('message deleted');
-          });
+          msg.delete([2000]);
         setTimeout(function(){
           msg.member.voiceChannel.leave();}, 3000);
         });
       } else if (umsg == "TAI PLS GO"){
         msg.member.voiceChannel.leave();
-        discordjs.deleteMessage(grabbed, 200, function(){
-          console.log('message deleted');
-        });
+        msg.delete([200]);
       }
     } else {
       if (recent){
