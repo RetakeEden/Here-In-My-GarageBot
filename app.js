@@ -57,7 +57,8 @@ discordjs.on('message', function(msg){
         msg.delete([200]);
       }
     } else {
-      console.log(msg.member.voiceChannel)
+      console.log(msg.member.voiceChannel);
+      console.log(msg.author.username);
       if (!recent){
         msg.channel.sendMessage("I can't tell you about my self-help if you don't join a voice channel, "+ msg.author.username + "!");
         recent = true;
