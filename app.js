@@ -3,7 +3,7 @@ var config = require('./config.json')
 
 var discordjs = new Discord.Client();
 
-var recent = true;
+var recent = false;
 
 discordjs.on("ready", function() {
   console.log('Currently on. Connected.');
@@ -21,7 +21,7 @@ discordjs.on('message', function(msg){
         msg.member.voiceChannel.join()
         .then(function(connection){
           connection.playFile('./himg.mp3')
-          recent = true;
+          recent = false;
           msg.delete([2000]);
         setTimeout(function(){
           msg.member.voiceChannel.leave();}, 5000);
@@ -56,11 +56,11 @@ discordjs.on('message', function(msg){
         msg.delete([200]);
       }
     } else {
-      if (recent){
-        msg.channel.sendMessage("I can't tell you about my self-help if you don't join a voice channel, "+ msg.author.username + "!")
+      if (!recent){
+        msg.channel.sendMessage("I can't tell you about my self-help if you don't join a voice channel, "+ msg.author.username + "!");
+        recent = true;
         console.log("user had no voice channel");
         return "no voice channel";
-        recent = true;
       }
     }
   // })
