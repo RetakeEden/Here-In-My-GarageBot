@@ -16,6 +16,7 @@ discordjs.on('message', function(msg){
     var smsg = msg.toString()
     var umsg = smsg.toUpperCase();
     if(msg.member.voiceChannel){
+      console.log(msg.member.voiceChannel)
       if (umsg == "$KNOWLEDGE") {
         console.log("knowledge was called")
         msg.member.voiceChannel.join()
@@ -56,6 +57,7 @@ discordjs.on('message', function(msg){
         msg.delete([200]);
       }
     } else {
+      console.log(msg.member.voiceChannel)
       if (!recent){
         msg.channel.sendMessage("I can't tell you about my self-help if you don't join a voice channel, "+ msg.author.username + "!");
         recent = true;
