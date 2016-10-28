@@ -1,67 +1,48 @@
 var Discord = require('discord.js');
 var config = require('./config.json')
+var parseLogic = require('./logic/parse.js')
+var messageLogic = require('./logic/messagecheck.js')
 
+//substantiates the bot client
 var discordjs = new Discord.Client();
 
+//Connection
 discordjs.on("ready", function() {
-  console.log('Currently on. Connected.');
+  console.log('Currently running.');
 });
 
-
+//called on every message
 discordjs.on('message', function(msg){
-  // discordjs.getMessage(msg.channel, msg.id)
-  // .then(function(grabbed){
-    var smsg = msg.toString()
-    var umsg = smsg.toUpperCase();
-    if(msg.member.voiceChannel){
-      console.log(msg.member.voiceChannel)
-      if (umsg == "$KNOWLEDGE") {
-        console.log("knowledge was called")
-        msg.member.voiceChannel.join()
-        .then(function(connection){
-          connection.playFile('./himg.mp3')
-          msg.delete([2000]);
-        setTimeout(function(){
-          msg.member.voiceChannel.leave();}, 5000);
-        });
-      } else if (umsg == "HI TAI!") {
-        msg.channel.sendMessage("Hello "+msg.author.username + ". Have you seen my 47 lambourghinis??");
-        msg.delete([2000]);
-        console.log("Hi was called");
-      } else if (umsg == "$FULLTHING"){
-        console.log("fullthing was called");
-        msg.member.voiceChannel.join()
-        .then(function(connection){
-          connection.playFile('./fullthing.mp3')
-          msg.delete([2000]);
-        setTimeout(function(){
-          msg.member.voiceChannel.leave();}, 200000);
-        });
-      } else if (umsg == "$KNAWLEDGE") {
-        console.log("knawledge was called");
-        msg.member.voiceChannel.join()
-        .then(function(connection){
-          connection.playFile('./garaaaage.mp3')
-          msg.delete([2000]);
-        setTimeout(function(){
-          msg.member.voiceChannel.leave();}, 3000);
-        });
-      } else if (umsg == "TAI PLS GO"){
-        msg.member.voiceChannel.leave();
-        msg.delete([200]);
-      }
-    } else {
-      if (umsg == "$KNAWLEDGE" || umsg == "$FULLTHING" || umsg == "$KNOWLEDGE" || umsg == "HI TAI!" || umsg == "TAI PLS GO"){
-        msg.channel.sendMessage("I can't tell you about my self-help if you don't join a voice channel, "+ msg.author.username + "!");
-        console.log("user had no voice channel");
-        return "no voice channel";
-      } else {
-        return "not viable command";
-      }
+  //Stores parsed message to be passed to other
+  //methods
+  var umsg = parseLogic.parseCheck(msg)
+  //Stores the return of chanCheck, which checks if
+  //a user is in a voicechannel
+  var chan = parseLogic.chanCheck(msg.member.voiceChannel);
+  //if the user is in a voicechannel
+  if(chan){
+    //Passes the parsed message and returns the key of
+    //a method that can be called with the passed in
+    //parsed message
+    var call = messageLogic.returnMethod(umsg)
+    //Takes the returned method key, and passes it
+    //with the message json object to the logic
+    //function that then calls individual methods
+    messageLogic.toCall(call, msg);
+    //else if they're not in a channel
+  } else {
+    //Passes the parsed message and returns the key of
+    //a method that can be called with the passed in
+    //parsed message
+    var toCall = messageLogic.returnMethod(umsg)
+    //if a key is returned through toCall
+    if (toCall){
+      //let the user know they must be in a channel
+      messageLogic.noGo(msg);
     }
-  // })
+  }
 });
 
 
-
+//Login info for the bot, stored in config.json
 discordjs.login(config.info.email, config.info.password);
