@@ -129,10 +129,10 @@ function noGo(msg){
 
 //Returns the method key in a string that matches
 //the command passed in by toCall
-function returnMethod(msg){
+function returnMethod(x){
   //checks in keys if a message matches a key value
   for (i in keys) {
-    if msg == keys[i]{
+    if (x == keys[i]){
       return key[i].toString();
     }
   }
