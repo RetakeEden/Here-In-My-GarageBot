@@ -118,7 +118,7 @@ function go(msg){
   msg.member.voiceChannel.leave();
   //delets the command message (requires bot to be
   //admin) 2s delay
-  msg.delete([2000]);
+  msg.delete([200]);
 }
 
 //On call, bot lets user know they must be in a voice
