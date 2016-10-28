@@ -134,6 +134,7 @@ function returnMethod(x){
   //checks in keys if a message matches a key value
   for (i in keys) {
     console.log(i)
+    console.log(keys)
     if (x == keys[i]){
       console.log(key[i])
       return key[i];
