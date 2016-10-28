@@ -14,6 +14,6 @@ function chanCheck(mem){
 }
 
 module.exports = {
-  parseCheck = parseCheck,
-  chanCheck = chanCheck
+  parseCheck: parseCheck,
+  chanCheck: chanCheck
 }
