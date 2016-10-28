@@ -137,3 +137,16 @@ function returnMethod(x){
     }
   }
 }
+
+
+module.exports = {
+  returnMethod = returnMethod,
+  go = go,
+  noGo = noGo,
+  knowledge = knowledge,
+  knawledge = knawledge,
+  drears = drears,
+  full = full,
+  hi = hi,
+  toCall = toCall
+}

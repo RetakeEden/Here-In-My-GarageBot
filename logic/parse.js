@@ -12,3 +12,8 @@ function chanCheck(mem){
     return false
   }
 }
+
+module.exports = {
+  parseCheck = parseCheck,
+  chanCheck = chanCheck
+}
