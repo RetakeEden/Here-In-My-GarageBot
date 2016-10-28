@@ -132,9 +132,7 @@ function noGo(msg){
 function returnMethod(x){
   console.log(x)
   //checks in keys if a message matches a key value
-  for (i in keys) {
-    console.log(i)
-    console.log(keys)
+  for (var i = 0; i <= keys.length; i++) {
     if (x == keys[i]){
       console.log(key[i])
       return key[i];
