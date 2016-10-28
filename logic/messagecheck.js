@@ -130,8 +130,10 @@ function noGo(msg){
 //Returns the method key in a string that matches
 //the command passed in by toCall
 function returnMethod(x){
+  console.log(x)
   //checks in keys if a message matches a key value
   for (i in keys) {
+    console.log(i)
     if (x == keys[i]){
       console.log(key[i])
       return key[i];
