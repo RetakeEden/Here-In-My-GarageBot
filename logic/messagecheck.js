@@ -132,7 +132,7 @@ function noGo(msg){
 function returnMethod(x){
   //checks in keys if a message matches a key value
   for (i in keys) {
-    if x = keys[i]{
+    if x == keys[i]{
       return key[i].toString();
     }
   }
