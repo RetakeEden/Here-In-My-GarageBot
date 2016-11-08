@@ -36,7 +36,7 @@ function knowledge(msg){
   msg.member.voiceChannel.join()
   .then(function(connection){
     //plays the specific file
-    connection.playFile('sounds/himg.mp3')
+    connection.playFile('./sounds/himg.mp3')
     //removes the called message (requires bot to be
     //admin) 2s delay
     msg.delete([2000]);
@@ -65,7 +65,7 @@ function full(msg){
   msg.member.voiceChannel.join()
   .then(function(connection){
     //play the specific file
-    connection.playFile('sounds/fullthing.mp3')
+    connection.playFile('./sounds/fullthing.mp3')
     //delete the called command message (requires
     //bot to be admin) 2s delay
     msg.delete([2000]);
@@ -83,7 +83,7 @@ function knawledge(msg){
   msg.member.voiceChannel.join()
   .then(function(connection){
     //plays the requested file
-    connection.playFile('sounds/garaaaage.mp3')
+    connection.playFile('./sounds/garaaaage.mp3')
     //deletes the called command (requires bot to be
     //admin) 2s delay
     msg.delete([2000]);
@@ -100,7 +100,7 @@ function drears(msg){
   msg.member.voiceChannel.join()
   .then(function(connection){
     //plays the specific file
-    connection.playFile('sounds/drears.mp3')
+    connection.playFile('./sounds/drears.mp3')
     //deletes the command message (requires bot to
     //be admin) 2s delay
     msg.delete([2000]);
