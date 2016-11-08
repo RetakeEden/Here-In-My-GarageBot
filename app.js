@@ -20,13 +20,15 @@ discordjs.on('message', function(msg){
   //a user is in a voicechannel
   if (msg.member.voiceChannel){
     var chan = parseLogic.chanCheck(msg.member.voiceChannel);
+    console.log('app.js line 22', chan)
   }
   //if the user is in a voicechannel
   if(chan){
     //Passes the parsed message and returns the key of
     //a method that can be called with the passed in
     //parsed message
-    var call = messageLogic.returnMethod(umsg)
+    var call = messageLogic.returnMethod(umsg);
+    console.log(call);
     //Takes the returned method key, and passes it
     //with the message json object to the logic
     //function that then calls individual methods
@@ -36,6 +38,7 @@ discordjs.on('message', function(msg){
     //Passes the parsed message and returns the key of
     //a method that can be called with the passed in
     //parsed message
+    console.log('hitting else')
     var toCall = messageLogic.returnMethod(umsg)
     //if a key is returned through toCall
     if (toCall){
