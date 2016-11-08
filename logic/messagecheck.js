@@ -7,22 +7,22 @@ var key = Object.keys(keys);
 //output of returnMethod
 function toCall(method, msg){
   //if the key is knowledge, call knowledge
-  if (method == 'knowledge'){
+  if (method == '$KNOWLEDGE'){
     knowledge(msg);
     //else if the key is knawledge call knawledge
-  } else if (method == 'knawledge'){
+  } else if (method == '$KNAWLEDGE'){
     knawledge(msg);
     //else if the key is hi call hi
-  } else if (method == 'hi'){
+  } else if (method == 'HI TAI!'){
     hi(msg);
     //else if the key is full call full
-  } else if (method == 'full'){
+  } else if (method == '$FULTHING'){
     full(msg);
     //else if the key is drears call drears
-  } else if (method == 'drears'){
+  } else if (method == '$DREARS'){
     drears(msg);
     //else if the key is go call go
-  } else if (method == 'go'){
+  } else if (method == 'TAI PLS GO'){
     go(msg);
   }
 }
@@ -139,8 +139,6 @@ function returnMethod(x){
   console.log(key.length)
   //checks in keys if a message matches a key value
   for (var i = 0; i <= 5; i++) {
-    console.log('im being hit')
-    console.log(key[i]);
     if (x == key[i]){
       return keys[x];
     }
