@@ -137,11 +137,11 @@ function returnMethod(x){
   x = x.join('');
   console.log(x, 'msgcheck line 135')
   //checks in keys if a message matches a key value
-  for (var i = 0; i <= keys.length; i++) {
-    console.log(keys);
-    console.log(keys[i])
+  for (var i in keys.length) {
+    console.log(keys, 'msgcheck line 141');
+    console.log(keys[i], 'msgcheck line 142')
     if (x == keys[i]){
-      console.log(key[i])
+      console.log(key[i], 'msgcheck line 144')
       return key[i];
     }
   }
