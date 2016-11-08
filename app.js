@@ -18,7 +18,9 @@ discordjs.on('message', function(msg){
   var umsg = parseLogic.parseCheck(msg)
   //Stores the return of chanCheck, which checks if
   //a user is in a voicechannel
-  var chan = parseLogic.chanCheck(msg.member.voiceChannel);
+  if (msg.member.voiceChannel){
+    var chan = parseLogic.chanCheck(msg.member.voiceChannel);
+  }
   //if the user is in a voicechannel
   if(chan){
     //Passes the parsed message and returns the key of
