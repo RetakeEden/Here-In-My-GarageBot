@@ -131,7 +131,7 @@ function noGo(msg){
 //the command passed in by toCall
 function returnMethod(x){
   x = x.toLowerCase()
-  x = x.split('').slice(0, 1).join('')
+  x = x.split('').reverse().pop().join('')
   console.log(x, 'msgcheck line 135')
   //checks in keys if a message matches a key value
   for (var i = 0; i <= keys.length; i++) {
