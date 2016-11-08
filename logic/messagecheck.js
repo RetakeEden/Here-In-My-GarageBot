@@ -135,8 +135,6 @@ function returnMethod(x){
   x.pop();
   x.reverse();
   x = x.join('');
-  console.log(x, 'msgcheck line 135')
-  console.log(key.length)
   //checks in keys if a message matches a key value
   for (var i = 0; i <= 5; i++) {
     if (x == key[i]){
