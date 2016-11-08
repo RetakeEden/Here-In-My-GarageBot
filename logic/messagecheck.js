@@ -139,10 +139,8 @@ function returnMethod(x){
   console.log(key.length)
   //checks in keys if a message matches a key value
   for (var i in key.length) {
-    console.log(keys, 'msgcheck line 141');
-    console.log(keys[i], 'msgcheck line 142')
+    console.log('im being hit')
     if (x == key[i]){
-      console.log(key[i], 'msgcheck line 144')
       return keys[x];
     }
   }
