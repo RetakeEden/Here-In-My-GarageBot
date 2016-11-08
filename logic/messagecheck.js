@@ -136,14 +136,14 @@ function returnMethod(x){
   x.reverse();
   x = x.join('');
   console.log(x, 'msgcheck line 135')
-  console.log(keys.length)
+  console.log(key.length)
   //checks in keys if a message matches a key value
-  for (var i in keys.length) {
+  for (var i in key.length) {
     console.log(keys, 'msgcheck line 141');
     console.log(keys[i], 'msgcheck line 142')
     if (x == key[i]){
       console.log(key[i], 'msgcheck line 144')
-      return key[i];
+      return keys[x];
     }
   }
 }
