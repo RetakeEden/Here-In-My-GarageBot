@@ -132,6 +132,7 @@ function noGo(msg){
 function returnMethod(x){
   x = x.toLowerCase()
   x = x.split('').slice(0, 1).join('')
+  console.log(x, 'msgcheck line 135')
   //checks in keys if a message matches a key value
   for (var i = 0; i <= keys.length; i++) {
     console.log(keys);
