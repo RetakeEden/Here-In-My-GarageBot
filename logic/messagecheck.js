@@ -136,7 +136,7 @@ function noGo(msg){
 //Returns the method key in a string that matches
 //the command passed in by toCall
 function returnMethod(x){
-  if (x.split('')[0] != config.prefix){
+  if (x.split('')[0] != config.info.prefix){
     return "Bad Prefix"
   } else {
     x = x.toLowerCase()
