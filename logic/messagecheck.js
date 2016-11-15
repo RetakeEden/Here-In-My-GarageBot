@@ -2,7 +2,7 @@ var config = require('../config.json');
 
 
 //the keys to match the parsed message against
-var keys = {knowledge: '$KNOWLEDGE', knawledge: '$KNAWLEDGE', hi: 'HI TAI!', full: '$FULLTHING', drears: '$DREARS', go: 'TAI PLS GO'}
+var keys = {knowledge: '$KNOWLEDGE', knawledge: '$KNAWLEDGE', hi: 'HI TAI!', full: '$FULLTHING', drears: '$DREARS', go: 'TAI PLS GO'};
 
 var key = Object.keys(keys);
 

@@ -1,7 +1,7 @@
 var Discord = require('discord.js');
-var config = require('./config.json')
-var parseLogic = require('./logic/parse.js')
-var messageLogic = require('./logic/messagecheck.js')
+var config = require('./config.json');
+var parseLogic = require('./logic/parse.js');
+var messageLogic = require('./logic/messagecheck.js');
 
 //substantiates the bot client
 var discordjs = new Discord.Client();
