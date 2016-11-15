@@ -50,7 +50,7 @@ discordjs.on('message', function(msg){
     //parsed message
     var toCall = messageLogic.returnMethod(umsg)
     //if a key is returned through toCall
-    if (toCall == null || toCall = "Bad Prefix"){
+    if (toCall == null || toCall == "Bad Prefix"){
       //let the user know they must be in a channel
       messageLogic.noGo(msg);
     }
