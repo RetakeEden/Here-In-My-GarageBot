@@ -1,3 +1,6 @@
+var config = require('../config.json');
+
+
 //the keys to match the parsed message against
 var keys = {knowledge: '$KNOWLEDGE', knawledge: '$KNAWLEDGE', hi: 'HI TAI!', full: '$FULLTHING', drears: '$DREARS', go: 'TAI PLS GO'}
 
@@ -133,7 +136,7 @@ function noGo(msg){
 //Returns the method key in a string that matches
 //the command passed in by toCall
 function returnMethod(x){
-  if (x.split('')[0] != '$'){
+  if (x.split('')[0] != config.prefix){
     return "Bad Prefix"
   } else {
     x = x.toLowerCase()

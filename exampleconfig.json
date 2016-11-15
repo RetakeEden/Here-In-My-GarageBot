@@ -1,6 +1,7 @@
 {
   "info": {
     "email": "<bot email here>",
-    "password": "<bot password here>"
+    "password": "<bot password here>",
+    "prefix": "<prefix here> (Currently only supports single prefix ie. $, ^, !, Z)"
   }
 }
