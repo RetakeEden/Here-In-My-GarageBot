@@ -16,14 +16,17 @@ function toCall(method, msg){
   } else if (method == 'HI TAI!'){
     hi(msg);
     //else if the key is full call full
-  } else if (method == '$FULTHING'){
+  } else if (method == '$FULLTHING'){
     full(msg);
-    //else if the key is drears call drears
-  } else if (method == '$DREARS'){
-    drears(msg);
+    //else if the key is drears call drears (currently damaged mp3
+    //file)
+  // } else if (method == '$DREARS'){
+  //   drears(msg);
     //else if the key is go call go
   } else if (method == 'TAI PLS GO'){
     go(msg);
+  } else {
+    console.log('Bad message');
   }
 }
 
@@ -130,15 +133,19 @@ function noGo(msg){
 //Returns the method key in a string that matches
 //the command passed in by toCall
 function returnMethod(x){
-  x = x.toLowerCase()
-  x = x.split('').reverse();
-  x.pop();
-  x.reverse();
-  x = x.join('');
-  //checks in keys if a message matches a key value
-  for (var i = 0; i <= 5; i++) {
-    if (x == key[i]){
-      return keys[x];
+  if (x.split('')[0] != '$'){
+    return "Bad Prefix"
+  } else {
+    x = x.toLowerCase()
+    x = x.split('').reverse();
+    x.pop();
+    x.reverse();
+    x = x.join('');
+    //checks in keys if a message matches a key value
+    for (var i = 0; i <= 5; i++) {
+      if (x == key[i]){
+        return keys[x];
+      }
     }
   }
 }
