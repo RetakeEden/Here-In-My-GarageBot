@@ -19,6 +19,7 @@ discordjs.on('message', function(msg){
     //Stores parsed message to be passed to other
     //methods
     var umsg = parseLogic.parseCheck(msg)
+    //Explains all the available commands and their usage.
     if (umsg == "TAI HELP"){
       msg.channel.sendMessage("Welcome! Most commands must be prefixed with the correct symbol! The current prefix is: "+config.info.prefix + " All commands are case insensitive.");
       msg.channel.sendMessage("My available commands are:");
