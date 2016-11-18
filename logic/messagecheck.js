@@ -136,19 +136,29 @@ function noGo(msg){
 //Returns the method key in a string that matches
 //the command passed in by toCall
 function returnMethod(x){
-  if (x.split('')[0] != config.info.prefix){
-    return "Bad Prefix"
-  } else {
-    x = x.toLowerCase()
-    x = x.split('').reverse();
-    x.pop();
-    x.reverse();
-    x = x.join('');
-    //checks in keys if a message matches a key value
-    for (var i = 0; i <= 5; i++) {
-      if (x == key[i]){
+  //setup var to check prefix
+  var y = x.split('')[0]
+  //make all messages uniform
+  x = x.toLowerCase()
+  //cut them into an array and reverse them
+  x = x.split('').reverse();
+  //Pull off the last value, the prefix
+  x.pop();
+  //Unreverse the array
+  x.reverse();
+  //Rejoin the array into a string
+  x = x.join('');
+  //checks in keys if a message matches a key value
+  for (var i = 0; i <= 5; i++) {
+    if (x == key[i]){
+      //Checks if the prefix fits that put into config.json
+      if (y != config.info.prefix){
+        return "Bad Prefix"
+      } else {
         return keys[x];
       }
+    } else {
+      return "No Command Found";
     }
   }
 }

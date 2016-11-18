@@ -43,10 +43,17 @@ discordjs.on('message', function(msg){
       //a method that can be called with the passed in
       //parsed message
       var call = messageLogic.returnMethod(umsg);
-      //Takes the returned method key, and passes it
-      //with the message json object to the logic
-      //function that then calls individual methods
-      messageLogic.toCall(call, msg);
+      //If the prefix doesn't match, tells the author the current
+      //prefix
+      if (call == "Bad Prefix"){
+        msg.channel.sendMessage(msg.author.username + ", you need to use the proper prefix! Currently set to " + config.info.prefix + ".");
+        //else if the prefix is good
+      } else {
+        //Takes the returned method key, and passes it
+        //with the message json object to the logic
+        //function that then calls individual methods
+        messageLogic.toCall(call, msg);
+      }
       //else if they're not in a channel
     } else {
       //Passes the parsed message and returns the key of
@@ -54,11 +61,15 @@ discordjs.on('message', function(msg){
       //parsed message
       var toCall = messageLogic.returnMethod(umsg)
       //if a key is returned through toCall
-      if (toCall != null || toCall != "Bad Prefix"){
+      if (toCall != "No Command Found" && toCall != "Bad Prefix"){
+        console.log(toCall, "line 58")
         //let the user know they must be in a channel
         messageLogic.noGo(msg);
       } else if (toCall == "Bad Prefix"){
         msg.channel.sendMessage(msg.author.username + ", you need to use the proper prefix! Currently set to " + config.info.prefix + ".");
+      } else {
+        console.log(toCall, "line 64");
+        return 'nothing';
       }
     }
   }
