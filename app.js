@@ -13,7 +13,7 @@ discordjs.on("ready", function() {
 
 //called on every message
 discordjs.on('message', function(msg){
-  if (msg.author == "Tai Lopez"){
+  if (msg.author.username == "Tai Lopez"){
     return;
   } else {
     //Stores parsed message to be passed to other
@@ -54,9 +54,11 @@ discordjs.on('message', function(msg){
       //parsed message
       var toCall = messageLogic.returnMethod(umsg)
       //if a key is returned through toCall
-      if (toCall == null || toCall == "Bad Prefix"){
+      if (toCall != null || toCall != "Bad Prefix"){
         //let the user know they must be in a channel
         messageLogic.noGo(msg);
+      } else if (toCall == "Bad Prefix"){
+        msg.channel.sendMessage(msg.author.username + ", you need to use the proper prefix! Currently set to " + config.info.prefix + ".");
       }
     }
   }
