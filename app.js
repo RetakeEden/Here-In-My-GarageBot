@@ -31,6 +31,19 @@ discordjs.on('message', function(msg){
       msg.channel.sendMessage("Hi Tai! : Just to say hi. I love it!");
       msg.channel.sendMessage("Tai Pls Go : I leave your channel! For when I'm getting annoying.");
       msg.channel.sendMessage("I will clean up any commands that are properly executed to keep your channel clean, but if you mistype it, I won't know what you mean and it'll stay there forever! (Or until you or an admin delete it)");
+    } else if (umsg == "HI TAI") {
+      //replies to the message author personally
+      msg.channel.sendMessage("Hello "+msg.author.username + ". Have you seen my 47 lambourghinis??");
+      //removes the called message (requires bot to be
+      //admin) 2s delay
+      msg.delete([2000]);
+    } else if (umsg == "TAI PLS GO"){
+      //bot leaves the current voice channel
+      //if no voice channel, does nothing
+      msg.member.voiceChannel.leave();
+      //delets the command message (requires bot to be
+      //admin) 2s delay
+      msg.delete([2000]);
     }
     //Stores the return of chanCheck, which checks if
     //a user is in a voicechannel

@@ -2,7 +2,7 @@ var config = require('../config.json');
 
 
 //the keys to match the parsed message against
-var keys = {knowledge: '$KNOWLEDGE', knawledge: '$KNAWLEDGE', hi: 'HI TAI!', full: '$FULLTHING', drears: '$DREARS', go: 'TAI PLS GO'};
+var keys = {knowledge: '$KNOWLEDGE', knawledge: '$KNAWLEDGE', fullthing: '$FULLTHING', drears: '$DREARS'};
 
 var key = Object.keys(keys);
 
@@ -16,9 +16,6 @@ function toCall(method, msg){
   } else if (method == '$KNAWLEDGE'){
     knawledge(msg);
     //else if the key is hi call hi
-  } else if (method == 'HI TAI!'){
-    hi(msg);
-    //else if the key is full call full
   } else if (method == '$FULLTHING'){
     full(msg);
     //else if the key is drears call drears (currently damaged mp3
@@ -26,9 +23,8 @@ function toCall(method, msg){
   // } else if (method == '$DREARS'){
   //   drears(msg);
     //else if the key is go call go
-  } else if (method == 'TAI PLS GO'){
-    go(msg);
   } else {
+    console.log("bad msg tried ", method)
     console.log('Bad message');
   }
 }
@@ -52,21 +48,12 @@ function knowledge(msg){
   });
 }
 
-//hi tai!
-//On call, the bot says hi to the user
-function hi(msg){
-  //replies to the message author personally
-  msg.channel.sendMessage("Hello "+msg.author.username + ". Have you seen my 47 lambourghinis??");
-  //removes the called message (requires bot to be
-  //admin) 2s delay
-  msg.delete([2000]);
-}
-
 //$fullthing
 //On call, bot players fullthing.mp3, deletes the
 //called command message and then leaves upon
 //completion
 function full(msg){
+  console.log('being hit');
   //join message authors voice channel
   msg.member.voiceChannel.join()
   .then(function(connection){
@@ -116,17 +103,6 @@ function drears(msg){
   });
 }
 
-//tai pls go
-//On call, bot leaves current voice channel
-function go(msg){
-  //bot leaves the current voice channel
-  //if no voice channel, does nothing
-  msg.member.voiceChannel.leave();
-  //delets the command message (requires bot to be
-  //admin) 2s delay
-  msg.delete([2000]);
-}
-
 //On call, bot lets user know they must be in a voice
 //channel to call commands
 function noGo(msg){
@@ -150,28 +126,26 @@ function returnMethod(x){
   x = x.join('');
   //checks in keys if a message matches a key value
   for (var i = 0; i <= 5; i++) {
+    console.log(x);
     if (x == key[i]){
       //Checks if the prefix fits that put into config.json
       if (y != config.info.prefix){
         return "Bad Prefix"
       } else {
+        console.log(keys[x]);
         return keys[x];
       }
-    } else {
-      return "No Command Found";
     }
-  }
+  } return "No Command Found";
 }
 
 
 module.exports = {
   returnMethod: returnMethod,
-  go: go,
   noGo: noGo,
   knowledge: knowledge,
   knawledge: knawledge,
   drears: drears,
   full: full,
-  hi: hi,
   toCall: toCall
 }
