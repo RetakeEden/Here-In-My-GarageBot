@@ -11,7 +11,7 @@ function msgFix(x){
 }
 
 function img(params, msg){
-  request(`http://api.giphy.com/v1/gifs/search?q=${params}&api_key=dc6zaTOxFJmzC`, function(err, res, body){
+  request(`http://api.giphy.com/v1/gifs/translate?s=${params}&api_key=dc6zaTOxFJmzC`, function(err, res, body){
     // console.log(parse.jsonParse(res));
     console.log('+++++++++++++++++++++++++++++++');
     var parsedBody = parse.jsonParse(body);
