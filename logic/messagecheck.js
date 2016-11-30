@@ -1,7 +1,6 @@
 var config = require('../config.json');
-var request = require('request');
 var gcheck = '';
-var glog = require('./glogic.js')
+var glog = require('./glogic.js');
 
 //the keys to match the parsed message against
 var keys = {knowledge: `${config.info.prefix}KNOWLEDGE`, knawledge: `${config.info.prefix}KNAWLEDGE`, fullthing: `${config.info.prefix}FULLTHING`, drears: `${config.prefix}DREARS`, giphy: `${config.info.prefix}GIPHY`};
@@ -26,7 +25,7 @@ function toCall(method, msg){
   //   drears(msg);
     //else if the key is go call go
   } else if (method == `${config.info.prefix}GIPHY`){
-    giphy(gcheck);
+    giphy(gcheck, msg);
   } else {
     console.log("bad msg tried ", method)
     console.log('Bad message');
@@ -112,8 +111,16 @@ function noGo(msg){
   msg.channel.sendMessage("I can't tell you about my self-help if you don't join a voice channel, "+ msg.author.username + "!");
 }
 
-function giphy(passed){
-  console.log(passed)
+function giphy(passed, msg){
+  Promise.resolve(glog.msgFix(passed))
+  .then(function(res){
+    return new Promise(function(resolve, reject){
+      console.log(res, "line 118")
+      var test = glog.img(res, msg);
+      console.log(test, "line 120")
+      resolve(test);
+    })
+  })
 }
 
 //Returns the method key in a string that matches

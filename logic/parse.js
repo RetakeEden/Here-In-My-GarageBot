@@ -4,6 +4,10 @@ function parseCheck(msg){
   return msg.toString().toUpperCase()
 }
 
+function jsonParse(str){
+  return JSON.parse(str);
+}
+
 //Gets whether a user is in a voiceChannel
 function chanCheck(mem){
   if (mem != null){
@@ -15,5 +19,6 @@ function chanCheck(mem){
 
 module.exports = {
   parseCheck: parseCheck,
-  chanCheck: chanCheck
+  chanCheck: chanCheck,
+  jsonParse: jsonParse
 }
