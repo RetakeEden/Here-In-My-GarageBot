@@ -15,7 +15,7 @@ function img(params, msg){
     // console.log(parse.jsonParse(res));
     console.log('+++++++++++++++++++++++++++++++');
     var parsedBody = parse.jsonParse(body);
-    var pass = parsedBody.data[0].bitly_url;
+    var pass = parsedBody.data.bitly_url;
     msg.channel.sendMessage(pass);
   })
 }
