@@ -1,8 +1,10 @@
 var config = require('../config.json');
-
+var request = require('request');
+var gcheck = '';
+var glog = require('./glogic.js')
 
 //the keys to match the parsed message against
-var keys = {knowledge: '$KNOWLEDGE', knawledge: '$KNAWLEDGE', fullthing: '$FULLTHING', drears: '$DREARS'};
+var keys = {knowledge: `${config.info.prefix}KNOWLEDGE`, knawledge: `${config.info.prefix}KNAWLEDGE`, fullthing: `${config.info.prefix}FULLTHING`, drears: `${config.prefix}DREARS`, giphy: `${config.info.prefix}GIPHY`};
 
 var key = Object.keys(keys);
 
@@ -10,19 +12,21 @@ var key = Object.keys(keys);
 //output of returnMethod
 function toCall(method, msg){
   //if the key is knowledge, call knowledge
-  if (method == '$KNOWLEDGE'){
+  if (method == `${config.info.prefix}KNOWLEDGE`){
     knowledge(msg);
     //else if the key is knawledge call knawledge
-  } else if (method == '$KNAWLEDGE'){
+  } else if (method == `${config.info.prefix}KNAWLEDGE`){
     knawledge(msg);
     //else if the key is hi call hi
-  } else if (method == '$FULLTHING'){
+  } else if (method == `${config.info.prefix}FULLTHING`){
     full(msg);
     //else if the key is drears call drears (currently damaged mp3
     //file)
   // } else if (method == '$DREARS'){
   //   drears(msg);
     //else if the key is go call go
+  } else if (method == `${config.info.prefix}GIPHY`){
+    giphy(gcheck);
   } else {
     console.log("bad msg tried ", method)
     console.log('Bad message');
@@ -53,7 +57,6 @@ function knowledge(msg){
 //called command message and then leaves upon
 //completion
 function full(msg){
-  console.log('being hit');
   //join message authors voice channel
   msg.member.voiceChannel.join()
   .then(function(connection){
@@ -109,9 +112,17 @@ function noGo(msg){
   msg.channel.sendMessage("I can't tell you about my self-help if you don't join a voice channel, "+ msg.author.username + "!");
 }
 
+function giphy(passed){
+  console.log(passed)
+}
+
 //Returns the method key in a string that matches
 //the command passed in by toCall
-function returnMethod(x){
+function returnMethod(n){
+  n = n.split(/ +(?=(?:(?:[^"]*"){2})*[^"]*$)/g);
+  console.log(n);
+  var x = n[0];
+  gcheck = n[1];
   //setup var to check prefix
   var y = x.split('')[0]
   //make all messages uniform
@@ -126,13 +137,12 @@ function returnMethod(x){
   x = x.join('');
   //checks in keys if a message matches a key value
   for (var i = 0; i <= 5; i++) {
-    console.log(x);
     if (x == key[i]){
       //Checks if the prefix fits that put into config.json
       if (y != config.info.prefix){
         return "Bad Prefix"
       } else {
-        console.log(keys[x]);
+        console.log(keys[x], 'line 144 msgcheck');
         return keys[x];
       }
     }
@@ -147,5 +157,6 @@ module.exports = {
   knawledge: knawledge,
   drears: drears,
   full: full,
-  toCall: toCall
+  toCall: toCall,
+  giphy: giphy
 }

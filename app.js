@@ -75,9 +75,14 @@ discordjs.on('message', function(msg){
       var toCall = messageLogic.returnMethod(umsg)
       //if a key is returned through toCall
       if (toCall != "No Command Found" && toCall != "Bad Prefix"){
-        console.log(toCall, "line 58")
-        //let the user know they must be in a channel
-        messageLogic.noGo(msg);
+        console.log(toCall, "line 78")
+        if (toCall == `${config.info.prefix}GIPHY`){
+          console.log('line 80 app')
+          messageLogic.toCall(toCall, msg);
+        } else {
+          //let the user know they must be in a channel
+          messageLogic.noGo(msg);
+        }
       } else if (toCall == "Bad Prefix"){
         msg.channel.sendMessage(msg.author.username + ", you need to use the proper prefix! Currently set to " + config.info.prefix + ".");
       } else {
