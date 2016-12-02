@@ -26,7 +26,8 @@ discordjs.on('message', function(msg){
       msg.channel.sendMessage(config.info.prefix + "knowledge : Plays the original sound bite of the original video!");
       msg.channel.sendMessage(config.info.prefix + "knawledge : Plays the beginning sound bite of the video I'm based on!");
       msg.channel.sendMessage(config.info.prefix + "fullthing : Plays the whole video I'm based on!");
-      msg.channel.sendMessage(config.info.prefix + "drears  (Currently Broken! :c )");
+      msg.channel.sendMessage(config.info.prefix + "giphy \"<Your params here>\" : Uses the Giphy API to run a translate on the search params provided and respond with a gif to fit it! One of the most fun commands.")
+      // msg.channel.sendMessage(config.info.prefix + "drears  (Currently Broken! :c )");
       msg.channel.sendMessage("There are two commands that do not require a prefix. They are as follows: ")
       msg.channel.sendMessage("Hi Tai! : Just to say hi. I love it!");
       msg.channel.sendMessage("Tai Pls Go : I leave your channel! For when I'm getting annoying.");
