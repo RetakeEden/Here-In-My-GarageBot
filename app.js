@@ -31,7 +31,7 @@ discordjs.on('message', function(msg){
       msg.channel.sendMessage("There are two commands that do not require a prefix. They are as follows: ")
       msg.channel.sendMessage("Hi Tai! : Just to say hi. I love it!");
       msg.channel.sendMessage("Tai Pls Go : I leave your channel! For when I'm getting annoying.");
-      msg.channel.sendMessage("I will clean up any commands that are properly executed to keep your channel clean, but if you mistype it, I won't know what you mean and it'll stay there forever! (Or until you or an admin delete it)");
+      msg.channel.sendMessage("I will clean up any commands that are properly executed to keep your channel spam free, but if you mistype it, I won't know what you mean and it'll stay there forever! (Or until you or an admin delete it)");
     } else if (umsg == "HI TAI") {
       //replies to the message author personally
       msg.channel.sendMessage("Hello "+msg.author.username + ". Have you seen my 47 lambourghinis??");
@@ -76,18 +76,20 @@ discordjs.on('message', function(msg){
       var toCall = messageLogic.returnMethod(umsg)
       //if a key is returned through toCall
       if (toCall != "No Command Found" && toCall != "Bad Prefix"){
-        console.log(toCall, "line 78")
+        //if the command is the giphy command
         if (toCall == `${config.info.prefix}GIPHY`){
-          console.log('line 80 app')
+          //call the giphy command in logic
           messageLogic.toCall(toCall, msg);
         } else {
           //let the user know they must be in a channel
           messageLogic.noGo(msg);
         }
+        //if the prefix is bad
       } else if (toCall == "Bad Prefix"){
+        //let the user know the current prefix
         msg.channel.sendMessage(msg.author.username + ", you need to use the proper prefix! Currently set to " + config.info.prefix + ".");
       } else {
-        console.log(toCall, "line 64");
+        //otherwise don't do anything at all
         return 'nothing';
       }
     }
