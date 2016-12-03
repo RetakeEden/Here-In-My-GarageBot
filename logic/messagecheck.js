@@ -125,7 +125,7 @@ function giphy(passed, msg){
 //the command passed in by toCall
 function returnMethod(n){
   // n = n.split(/ +(?=(?:(?:[^"]*"){2})*[^"]*$)/g);
-  n = n.split([^\s]+);
+  n = n.split(/^[^\s]+/);
   console.log(n);
   var x = n[0];
   gcheck = n[1];
