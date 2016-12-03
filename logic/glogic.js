@@ -6,7 +6,7 @@ function msgFix(x){
     return;
   } else {
     x = x.toLowerCase();
-    return x.split(' ').join('+');
+    return x.replace(/\"/g, "").split(' ').join('+');
   }
 }
 

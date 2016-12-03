@@ -124,8 +124,7 @@ function giphy(passed, msg){
 //Returns the method key in a string that matches
 //the command passed in by toCall
 function returnMethod(n){
-  // n = n.split(/ +(?=(?:(?:[^"]*"){2})*[^"]*$)/g);
-  n = n.split(/^[^\s]+/);
+  n = n.split(/ +(?=(?:(?:[^"]*"){2})*[^"]*$)/g);
   console.log(n);
   var x = n[0];
   gcheck = n[1];
