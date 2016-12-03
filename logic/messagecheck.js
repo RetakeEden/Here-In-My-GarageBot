@@ -115,10 +115,8 @@ function giphy(passed, msg){
   Promise.resolve(glog.msgFix(passed))
   .then(function(res){
     return new Promise(function(resolve, reject){
-      console.log(res, "line 118")
-      var test = glog.img(res, msg);
-      console.log(test, "line 120")
-      resolve(test);
+      var asyn = glog.img(res, msg);
+      resolve(asyn);
     })
   })
 }
@@ -126,7 +124,8 @@ function giphy(passed, msg){
 //Returns the method key in a string that matches
 //the command passed in by toCall
 function returnMethod(n){
-  n = n.split(/ +(?=(?:(?:[^"]*"){2})*[^"]*$)/g);
+  // n = n.split(/ +(?=(?:(?:[^"]*"){2})*[^"]*$)/g);
+  n = n.split([^\s]+);
   console.log(n);
   var x = n[0];
   gcheck = n[1];

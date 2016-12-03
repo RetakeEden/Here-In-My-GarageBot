@@ -32,7 +32,7 @@ discordjs.on('message', msg => {
       msg.channel.sendMessage("Hi Tai! : Just to say hi. I love it!");
       msg.channel.sendMessage("Tai Pls Go : I leave your channel! For when I'm getting annoying.");
       msg.channel.sendMessage("I will clean up any commands that are properly executed to keep your channel spam free, but if you mistype it, I won't know what you mean and it'll stay there forever! (Or until you or an admin delete it)");
-    } else if (umsg == "HI TAI") {
+    } else if (umsg == "HI TAI" || umsg == "HI TAI!") {
       //replies to the message author personally
       msg.channel.sendMessage("Hello "+msg.author.username + ". Have you seen my 47 lambourghinis??");
       //removes the called message (requires bot to be
