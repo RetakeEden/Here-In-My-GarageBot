@@ -7,12 +7,12 @@ var messageLogic = require('./logic/messagecheck.js');
 var discordjs = new Discord.Client();
 
 //Connection
-discordjs.on("ready", function() {
+discordjs.on("ready", () => {
   console.log('Currently running.');
 });
 
 //called on every message
-discordjs.on('message', function(msg){
+discordjs.on('message', msg => {
   if (msg.author.username == "Tai Lopez"){
     return;
   } else {
