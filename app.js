@@ -45,6 +45,22 @@ discordjs.on('message', msg => {
       //delets the command message (requires bot to be
       //admin) 2s delay
       msg.delete([2000]);
+      //if anyone says nice meme
+    } else if (umsg == "NICE MEME" || umsg == "NICE MEME!"){
+      //And they're in a voice channel
+      if (msg.member.voiceChannel){
+        //joins their voice channel
+        msg.member.voiceChannel.join()
+        .then(function(connection){
+          //plays the specific file
+          connection.playFile('./sounds/nicememe.mp3')
+          //leaves after 3 seconds
+        setTimeout(function(){
+          msg.member.voiceChannel.leave();}, 3000);
+        });
+      } else {
+        return;
+      }
     }
     //Stores the return of chanCheck, which checks if
     //a user is in a voicechannel
