@@ -13,11 +13,9 @@ function base(passed, msg){
   }
   request(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=${final}&maxResults=1&key=${config.info.apiKEY}`, function(err, res, body){
     var testbody = JSON.parse(body)
-    console.log(testbody);
     search.push(testbody.items[0].id.videoId);
-    console.log(testbody.items[0].snippet.title)
     searchname.push(testbody.items[0].snippet.title);
-    msg.channel.sendMessage("")
+    msg.channel.sendMessage("has been added to queue.")
     ytpb(msg);
   })
 }
@@ -43,9 +41,11 @@ function queued(conn, msg){
   msg.channel.sendMessage("Now playing: " + searchname[0]);
   var disp = conn.playStream(stream, streamOptions);
   disp.on('end', function(){
-    conn.disconnect();
-    // search.splice(0,1);
-    // searchname.splice(0,1);
+    search.splice(0,1);
+    searchname.splice(0,1);
+    if (search.length == 0) {
+      conn.disconnect();
+    }
     // ytpb(msg);
   })
 }
