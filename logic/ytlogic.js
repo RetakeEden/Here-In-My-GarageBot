@@ -24,12 +24,12 @@ function ytpb(search, msg){
   if (msg.member.voiceChannel){
     msg.member.voiceChannel.join()
     .then(function(connection){
-      var stream = ytdl(`https://www.youtu.be/${search}`, {quality: "lowest"})
+      var stream = ytdl(`https://www.youtube.com/watch?v=${search}`, {filter: "audioonly"})
       connection.playStream(stream, streamOptions);
     })
     .catch(console.error)
   } else {
-    msg.channel.sendMessage(`https://www.youtu.be/${search}`)
+    msg.channel.sendMessage(`https://www.youtube.com/watch?v=${search}`)
   }
 }
 
