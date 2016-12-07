@@ -7,8 +7,8 @@ var ylog = require('./ytlogic.js');
 var keys = {
   knowledge: `${config.info.prefix}KNOWLEDGE`, knawledge: `${config.info.prefix}KNAWLEDGE`, fullthing: `${config.info.prefix}FULLTHING`, drears: `${config.prefix}DREARS`,
   giphy: `${config.info.prefix}GIPHY`,
-  yt: `${config.info.prefix}YT`,
   ytq: `${config.info.prefix}YTQ`,
+  yt: `${config.info.prefix}YT`,
 };
 
 var key = Object.keys(keys);
