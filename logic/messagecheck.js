@@ -1,9 +1,10 @@
 var config = require('../config.json');
 var gcheck = '';
 var glog = require('./glogic.js');
+var ylog = require('./ytlogic.js');
 
 //the keys to match the parsed message against
-var keys = {knowledge: `${config.info.prefix}KNOWLEDGE`, knawledge: `${config.info.prefix}KNAWLEDGE`, fullthing: `${config.info.prefix}FULLTHING`, drears: `${config.prefix}DREARS`, giphy: `${config.info.prefix}GIPHY`};
+var keys = {knowledge: `${config.info.prefix}KNOWLEDGE`, knawledge: `${config.info.prefix}KNAWLEDGE`, fullthing: `${config.info.prefix}FULLTHING`, drears: `${config.prefix}DREARS`, giphy: `${config.info.prefix}GIPHY`, yt: `${config.info.prefix}YT`};
 
 var key = Object.keys(keys);
 
@@ -26,6 +27,8 @@ function toCall(method, msg){
     //else if the key is go call go
   } else if (method == `${config.info.prefix}GIPHY`){
     giphy(gcheck, msg);
+  } else if (method == `${config.info.prefix}YT`){
+    youtube(gcheck, msg);
   } else {
     console.log("bad msg tried ", method)
     console.log('Bad message');
@@ -119,6 +122,10 @@ function giphy(passed, msg){
       resolve(asyn);
     })
   })
+}
+
+function youtube(passed, msg){
+  ylog.base(passed)
 }
 
 //Returns the method key in a string that matches

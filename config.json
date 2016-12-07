@@ -3,6 +3,7 @@
   "info": {
     "email": "taiplslopez@gmx.com",
     "password": "iamabot",
-    "prefix": "$"
+    "prefix": "$",
+    "apiKEY": "AIzaSyANrCkA9v9DdzxsKQj70mMAlsS3BXWVmmw"
   }
 }
