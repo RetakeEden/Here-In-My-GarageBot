@@ -3,7 +3,8 @@ var config = require('../config.json'),
     request = require('request'),
     search = [],
     searchname = [],
-    main = require('../app.js');
+    main = require('../app.js'),
+    client = '';
 
 function base(passed, msg, clie){
   if (passed[0] == "\'"){
@@ -26,23 +27,21 @@ function queue(msg){
   console.log(search);
 }
 
-function ytpb(msg, clie){
-  currconns = clie.voiceConnections.array();
-  console.log(currconns);
-  console.log("=============")
-  console.log(clie.voiceConnections)
-  if (clie.voiceConnections[0]) {
-    console.log(true)
+function ytpb(msg, clie, conn){
+  client = clie;
+  var currconns = clie.voiceConnections.array();
+  if (currconns) {
+    queued(currconns[0], msg);
   } else {
-    console.log(false)
-  }
-  if (msg.member.voiceChannel){
-    msg.member.voiceChannel.join()
-    .then(function(connection){
-      queued(connection, msg);
-    })
-  } else {
-    msg.channel.sendMessage("You're not in a voice channel!")
+    if (msg.member.voiceChannel){
+      msg.member.voiceChannel.join()
+      .then(function(connection){
+        console.log(connection);
+        queued(connection, msg);
+      })
+    } else {
+      msg.channel.sendMessage("You're not in a voice channel!")
+    }
   }
 }
 
@@ -58,6 +57,8 @@ function queued(conn, msg){
       if (search.length == 0) {
         conn.disconnect();
         msg.channel.sendMessage("Queue empty. Disconnecting!");
+      } else {
+        ytpb(msg, client, conn)
       }
       // ytpb(msg);
     })
