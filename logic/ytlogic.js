@@ -16,7 +16,7 @@ function base(passed, msg){
     console.log(res)
     console.log("=========================")
     var testbody = JSON.parse(body)
-    console.log(testbody);
+    console.log(testbody.items[0].id);
   })
 }
 
