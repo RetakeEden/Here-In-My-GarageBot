@@ -6,6 +6,8 @@ var messageLogic = require('./logic/messagecheck.js');
 //substantiates the bot client
 var discordjs = new Discord.Client();
 
+var clie = discordjs
+
 //Connection
 discordjs.on("ready", () => {
   console.log('Currently running.');
