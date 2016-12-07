@@ -27,7 +27,7 @@ function queue(msg){
 }
 
 function ytpb(msg, clie){
-  console.log(clie.voiceConnections);
+  console.log(clie);
   if (msg.member.voiceChannel){
     msg.member.voiceChannel.join()
     .then(function(connection){
