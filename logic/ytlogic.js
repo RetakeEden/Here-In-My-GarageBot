@@ -13,11 +13,23 @@ function base(passed, msg){
   }
   console.log(final, "final one")
   request(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=${final}&key=${config.info.apiKEY}`, function(err, res, body){
-    console.log(res)
-    console.log("=========================")
     var testbody = JSON.parse(body)
-    console.log(testbody.items[0].id);
+    var search = testbody.items[0].id.videoId;
+    ytpb(search, msg);
   })
+}
+
+function ytpb(search, msg){
+  var streamOptions = { seek: 0, volume: 1 };
+  if (msg.member.voiceChannel){
+    msg.member.voiceChannel.join()
+    .then(function(connection){
+      var stream = ytdl(`https://www.youtu.be/${search}`, {filter: "audioonly"})
+      connection.playStream(stream, streamOptions);
+    })
+  } else {
+    msg.channel.sendMessage(`https://www.youtu.be/${search}`)
+  }
 }
 
 
