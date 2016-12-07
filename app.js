@@ -95,7 +95,7 @@ discordjs.on('message', msg => {
           //call the giphy command in logic
           messageLogic.toCall(toCall, msg);
         } else if (toCall == `${config.info.prefix}YT`){
-          messageLogic.toCall(toCall, msg);
+          messageLogic.toCall(toCall, msg, clie);
         } else {
           //let the user know they must be in a channel
           messageLogic.noGo(msg);
@@ -111,7 +111,6 @@ discordjs.on('message', msg => {
     }
   }
 });
-
 
 //Login info for the bot, stored in config.json
 discordjs.login(config.info.email, config.info.password);
