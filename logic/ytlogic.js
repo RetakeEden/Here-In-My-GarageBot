@@ -31,7 +31,7 @@ function ytpb(msg, clie, conn){
   client = clie;
   var currconns = clie.voiceConnections.array();
   if (currconns[0]) {
-    console.log(currcons[0].speaking);
+    console.log(currconns[0].speaking);
     // if (currconns[0].speaking == true){
     //   console.log("transmitting, will wait");
     // } else {
