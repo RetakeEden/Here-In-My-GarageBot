@@ -15,7 +15,7 @@ function base(passed){
   request(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=${final}&key=${config.info.apiKEY}`, function(err, res, body){
     console.log(res)
     console.log("=========================")
-    console.log(JSON.stringify(res));
+    console.log(JSON.parse(res));
   })
 }
 
