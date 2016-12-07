@@ -33,9 +33,10 @@ function ytpb(msg, clie, conn){
   var currconns = clie.voiceConnections.array();
   if (currconns[0]) {
     if (jpd == false){
-    console.log("transmitting, will wait")
-  } else if (jpd == true){
-    jpd = false;
+      console.log("transmitting, will wait")
+    } else if (jpd == true){
+      jpd = false;
+    }
   } else {
     if (msg.member.voiceChannel){
       msg.member.voiceChannel.join()
