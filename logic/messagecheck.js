@@ -15,7 +15,7 @@ var key = Object.keys(keys);
 
 //Calls the specific method for the bot based on
 //output of returnMethod
-function toCall(method, msg){
+function toCall(method, msg, clie){
   //if the key is knowledge, call knowledge
   if (method == `${config.info.prefix}KNOWLEDGE`){
     knowledge(msg);
@@ -33,7 +33,7 @@ function toCall(method, msg){
   } else if (method == `${config.info.prefix}GIPHY`){
     giphy(gcheck, msg);
   } else if (method == `${config.info.prefix}YT`){
-    youtube(gcheck, msg);
+    youtube(gcheck, msg, clie);
   } else if (method == `${config.info.prefix}QUEUE`){
     ytq(msg)
   } else {
@@ -131,8 +131,8 @@ function giphy(passed, msg){
   })
 }
 
-function youtube(passed, msg){
-  ylog.base(passed, msg)
+function youtube(passed, msg, clie){
+  ylog.base(passed, msg, clie)
 }
 
 function ytq(msg){

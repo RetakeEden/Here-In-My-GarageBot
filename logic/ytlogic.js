@@ -5,7 +5,7 @@ var config = require('../config.json'),
     searchname = [],
     main = require('../app.js');
 
-function base(passed, msg){
+function base(passed, msg, clie){
   if (passed[0] == "\'"){
     return;
   } else {
@@ -17,7 +17,7 @@ function base(passed, msg){
     search.push(testbody.items[0].id.videoId);
     searchname.push(testbody.items[0].snippet.title);
     msg.channel.sendMessage("\"" +testbody.items[0].snippet.title + "\" has been added to queue.")
-    ytpb(msg);
+    ytpb(msg, clie);
   })
 }
 
@@ -26,8 +26,8 @@ function queue(msg){
   console.log(search);
 }
 
-function ytpb(msg){
-  console.log(main.discordjs.voiceConnections);
+function ytpb(msg, clie){
+  console.log(clie.voiceConnections);
   if (msg.member.voiceChannel){
     msg.member.voiceChannel.join()
     .then(function(connection){
