@@ -2,7 +2,8 @@ var config = require('../config.json'),
     ytdl = require('ytdl-core'),
     request = require('request'),
     search = [],
-    searchname = [];
+    searchname = [],
+    main = require('../app.js');
 
 function base(passed, msg){
   if (passed[0] == "\'"){
@@ -26,7 +27,7 @@ function queue(msg){
 }
 
 function ytpb(msg){
-  console.log(discordjs.voiceConnections);
+  console.log(main.discordjs.voiceConnections);
   if (msg.member.voiceChannel){
     msg.member.voiceChannel.join()
     .then(function(connection){
