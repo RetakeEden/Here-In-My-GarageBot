@@ -7,8 +7,8 @@ var ylog = require('./ytlogic.js');
 var keys = {
   knowledge: `${config.info.prefix}KNOWLEDGE`, knawledge: `${config.info.prefix}KNAWLEDGE`, fullthing: `${config.info.prefix}FULLTHING`, drears: `${config.prefix}DREARS`,
   giphy: `${config.info.prefix}GIPHY`,
-  queue: `${config.info.prefix}QUEUE`,
   yt: `${config.info.prefix}YT`,
+  queue: `${config.info.prefix}QUEUE`,
 };
 
 var key = Object.keys(keys);
@@ -35,7 +35,7 @@ function toCall(method, msg){
   } else if (method == `${config.info.prefix}YT`){
     youtube(gcheck, msg);
   } else if (method == `${config.info.prefix}QUEUE`){
-    ytq(msg);
+    ytq(msg)
   } else {
     console.log("bad msg tried ", method)
     console.log('Bad message');
