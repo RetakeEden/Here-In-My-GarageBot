@@ -28,7 +28,7 @@ function queue(msg){
 
 function ytpb(msg, clie){
   console.log(clie.voiceConnections);
-  if (clie.voiceConnections) {
+  if (clie.voiceConnections[0]) {
     console.log(true)
   } else {
     console.log(false)
