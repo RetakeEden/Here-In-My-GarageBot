@@ -4,7 +4,8 @@ var config = require('../config.json'),
     search = [],
     searchname = [],
     main = require('../app.js'),
-    client = '';
+    client = '',
+    jpd = null;
 
 function base(passed, msg, clie){
   if (passed[0] == "\'"){
@@ -31,14 +32,12 @@ function ytpb(msg, clie, conn){
   client = clie;
   var currconns = clie.voiceConnections.array();
   if (currconns[0]) {
-    console.log("transmitting, will wait")
-    // if (currconns[0].speaking == true){
-    //   console.log("transmitting, will wait");
-    // } else {
-    //   queued(currconns[0], msg);
-    // }
-  // if (conn){
-  //   console.log(conn.speaking);
+    if (jpd = true) {
+      jpd = false;
+      queued(conn, msg);
+    } else if (jpd = false){
+      console.log("transmitting, will wait")
+    }
   } else {
     if (msg.member.voiceChannel){
       msg.member.voiceChannel.join()
@@ -61,13 +60,13 @@ function queued(conn, msg){
       search.splice(0,1);
       searchname.splice(0,1);
       if (search.length == 0) {
+        jpd = true;
         conn.disconnect();
         msg.channel.sendMessage("Queue empty. Disconnecting!");
       } else {
-        conn.disconnect();
+        jpd = true;
         ytpb(msg, client, conn)
       }
-      // ytpb(msg);
     })
   } else {
     msg.channel.sendMessage("Queue empty. Disconnecting!");
