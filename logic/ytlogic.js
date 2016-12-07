@@ -62,7 +62,6 @@ function queued(conn, msg){
       searchname.splice(0,1);
       if (search.length == 0) {
         console.log(jpd, 'line 64');
-        jpd = true;
         conn.disconnect();
         msg.channel.sendMessage("Queue empty. Disconnecting!");
       } else {
