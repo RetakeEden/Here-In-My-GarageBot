@@ -28,6 +28,11 @@ function queue(msg){
 
 function ytpb(msg, clie){
   console.log(clie.voiceConnections);
+  if clie.voiceConnections {
+    console.log(true)
+  } else {
+    console.log(false)
+  }
   if (msg.member.voiceChannel){
     msg.member.voiceChannel.join()
     .then(function(connection){
