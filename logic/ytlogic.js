@@ -33,7 +33,7 @@ function ytpb(msg, clie, conn){
   var currconns = clie.voiceConnections.array();
   if (currconns[0]) {
     if (jpd = true) {
-      console.log(jpd);
+      console.log(jpd, 'line 36');
       jpd = false;
       queued(currconns[0], msg);
     } else if (jpd = false){
@@ -61,12 +61,12 @@ function queued(conn, msg){
       search.splice(0,1);
       searchname.splice(0,1);
       if (search.length == 0) {
-        console.log(jpd);
+        console.log(jpd, 'line 64');
         jpd = true;
         conn.disconnect();
         msg.channel.sendMessage("Queue empty. Disconnecting!");
       } else {
-        console.log(jpd);
+        console.log(jpd, 'line 69');
         jpd = true;
         ytpb(msg, client, conn)
       }
