@@ -27,7 +27,8 @@ function queue(msg){
 }
 
 function ytpb(msg, clie){
-  console.log(clie.voiceConnections);
+  currconns = clie.voiceConnections.array();
+  console.log(currconns);
   console.log("=============")
   console.log(clie.voiceConnections)
   if (clie.voiceConnections[0]) {
