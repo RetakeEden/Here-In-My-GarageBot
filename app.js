@@ -36,9 +36,6 @@ discordjs.on('message', msg => {
     } else if (umsg == "HI TAI" || umsg == "HI TAI!") {
       //replies to the message author personally
       msg.channel.sendMessage("Hello "+msg.author.username + ". Have you seen my 47 lambourghinis??");
-      //removes the called message (requires bot to be
-      //admin) 2s delay
-      msg.delete([2000]);
     } else if (umsg == "TAI PLS GO"){
       //bot leaves the current voice channel
       //if no voice channel, does nothing
