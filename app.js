@@ -6,8 +6,6 @@ var messageLogic = require('./logic/messagecheck.js');
 //substantiates the bot client
 var discordjs = new Discord.Client();
 
-var clie = discordjs
-
 //Connection
 discordjs.on("ready", () => {
   console.log('Currently running.');
@@ -82,7 +80,7 @@ discordjs.on('message', msg => {
         //Takes the returned method key, and passes it
         //with the message json object to the logic
         //function that then calls individual methods
-        messageLogic.toCall(call, msg, clie);
+        messageLogic.toCall(call, msg, discordjs);
       }
       //else if they're not in a channel
     } else {
@@ -95,9 +93,9 @@ discordjs.on('message', msg => {
         //if the command is the giphy command
         if (toCall == `${config.info.prefix}GIPHY`){
           //call the giphy command in logic
-          messageLogic.toCall(toCall, msg, clie);
+          messageLogic.toCall(toCall, msg, discordjs);
         } else if (toCall == `${config.info.prefix}YT`){
-          messageLogic.toCall(toCall, msg, clie);
+          messageLogic.toCall(toCall, msg, discordjs);
         } else {
           //let the user know they must be in a channel
           messageLogic.noGo(msg);
