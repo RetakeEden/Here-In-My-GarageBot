@@ -31,7 +31,7 @@ function ytpb(msg, clie, conn){
   client = clie;
   var currconns = clie.voiceConnections.array();
   if (currconns[0]) {
-    console.log(currconns[0].speaking);
+    console.log("transmitting, will wait")
     // if (currconns[0].speaking == true){
     //   console.log("transmitting, will wait");
     // } else {
@@ -64,6 +64,7 @@ function queued(conn, msg){
         conn.disconnect();
         msg.channel.sendMessage("Queue empty. Disconnecting!");
       } else {
+        conn.disconnect();
         ytpb(msg, client, conn)
       }
       // ytpb(msg);
