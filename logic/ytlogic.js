@@ -29,13 +29,16 @@ function queue(msg){
 
 function ytpb(msg, clie, conn){
   client = clie;
-  var currconns = clie.voiceConnections.array();
-  if (currconns[0]) {
-    if (currconns[0].speaking == true){
-      console.log("transmitting, will wait")
-    } else {
-      queued(currconns[0], msg);
-    }
+  // var currconns = clie.voiceConnections.array();
+  // if (currconns[0]) {
+    // console.log(currcons[0].speaking);
+    // if (currconns[0].speaking == true){
+    //   console.log("transmitting, will wait");
+    // } else {
+    //   queued(currconns[0], msg);
+    // }
+  if (conn){
+    console.log(conn.speaking);
   } else {
     if (msg.member.voiceChannel){
       msg.member.voiceChannel.join()
