@@ -15,7 +15,7 @@ function base(passed, msg){
     var testbody = JSON.parse(body)
     search.push(testbody.items[0].id.videoId);
     searchname.push(testbody.items[0].snippet.title);
-    msg.channel.sendMessage("has been added to queue.")
+    msg.channel.sendMessage("\"" +testbody.items[0].snippet.title + "\" has been added to queue.")
     ytpb(msg);
   })
 }
