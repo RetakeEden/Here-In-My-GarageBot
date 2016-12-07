@@ -53,7 +53,7 @@ discordjs.on('message', msg => {
         msg.member.voiceChannel.join()
         .then(function(connection){
           //plays the specific file
-          connection.playFile('./sounds/nicememe.mp3')
+          connection.playFile('./sounds/nicememe.mp3', {volume: '2.0'});
           //leaves after 3 seconds
         setTimeout(function(){
           msg.member.voiceChannel.leave();}, 3000);
