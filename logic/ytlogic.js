@@ -43,9 +43,10 @@ function queued(conn, msg){
   msg.channel.sendMessage("Now playing: " + searchname[0]);
   var disp = conn.playStream(stream, streamOptions);
   disp.on('end', function(){
-    search.splice(0,1);
-    searchname.splice(0,1);
-    ytpb(msg);
+    conn.disconnect();
+    // search.splice(0,1);
+    // searchname.splice(0,1);
+    // ytpb(msg);
   })
 }
 
