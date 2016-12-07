@@ -34,7 +34,7 @@ function ytpb(msg, clie, conn){
   if (currconns[0]) {
     if (jpd = true) {
       jpd = false;
-      queued(conn, msg);
+      queued(currconns[0], msg);
     } else if (jpd = false){
       console.log("transmitting, will wait")
     }
