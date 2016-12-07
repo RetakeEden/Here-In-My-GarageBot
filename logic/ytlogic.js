@@ -22,6 +22,7 @@ function base(passed, msg){
 
 function queue(msg){
   msg.channel.sendMessage("The current queue is: " + searchname)
+  console.log(search);
 }
 
 function ytpb(msg){
@@ -36,20 +37,26 @@ function ytpb(msg){
 }
 
 function queued(conn, msg){
-  var streamOptions = { seek: 0, volume: 1 };
-  var stream = ytdl(`https://www.youtube.com/watch?v=${search[0]}`, {filter: "audioonly"})
-  msg.channel.sendMessage("Now playing: " + searchname[0]);
-  var disp = conn.playStream(stream, streamOptions);
-  disp.on('end', function(){
-    search.splice(0,1);
-    searchname.splice(0,1);
-    if (search.length == 0) {
-      conn.disconnect();
-    }
-    // ytpb(msg);
-  })
+  if (search.length != 0){
+    var streamOptions = { seek: 0, volume: 1 };
+    var stream = ytdl(`https://www.youtube.com/watch?v=${search[0]}`, {filter: "audioonly"})
+    msg.channel.sendMessage("Now playing: " + searchname[0]);
+    var disp = conn.playStream(stream, streamOptions);
+    disp.on('end', function(){
+      search.splice(0,1);
+      searchname.splice(0,1);
+      if (search.length == 0) {
+        conn.disconnect();
+      }
+      // ytpb(msg);
+    })
+  } else {
+    msg.channel.sendMessage("Queue empty. Disconnecting!");
+
+  }
 }
 
 module.exports = {
   base: base,
+  queue: queue,
 }
