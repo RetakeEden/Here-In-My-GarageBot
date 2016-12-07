@@ -26,6 +26,7 @@ function queue(msg){
 }
 
 function ytpb(msg){
+  console.log(discordjs.voiceConnections);
   if (msg.member.voiceChannel){
     msg.member.voiceChannel.join()
     .then(function(connection){
@@ -52,7 +53,6 @@ function queued(conn, msg){
     })
   } else {
     msg.channel.sendMessage("Queue empty. Disconnecting!");
-
   }
 }
 
