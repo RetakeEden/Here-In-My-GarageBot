@@ -96,6 +96,8 @@ discordjs.on('message', msg => {
         if (toCall == `${config.info.prefix}GIPHY`){
           //call the giphy command in logic
           messageLogic.toCall(toCall, msg);
+        } else if (toCall == `${config.info.prefix}YT`){
+          messageLogic.toCall(toCall, msg);
         } else {
           //let the user know they must be in a channel
           messageLogic.noGo(msg);
