@@ -125,7 +125,7 @@ function giphy(passed, msg){
 }
 
 function youtube(passed, msg){
-  ylog.base(passed)
+  ylog.base(passed, msg)
 }
 
 //Returns the method key in a string that matches
