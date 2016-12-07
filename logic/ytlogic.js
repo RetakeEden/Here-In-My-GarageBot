@@ -15,9 +15,8 @@ function base(passed, msg){
     var testbody = JSON.parse(body)
     console.log(testbody);
     search.push(testbody.items[0].id.videoId);
-    console.log(testbody.items[1]);
-    console.log(testbody.items[1].title)
-    searchname.push(testbody.items[1].title);
+    console.log(testbody.items[0].snippet.title)
+    searchname.push(testbody.items[0].snippet.title);
     msg.channel.sendMessage("")
     ytpb(msg);
   })
