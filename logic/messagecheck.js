@@ -4,7 +4,12 @@ var glog = require('./glogic.js');
 var ylog = require('./ytlogic.js');
 
 //the keys to match the parsed message against
-var keys = {knowledge: `${config.info.prefix}KNOWLEDGE`, knawledge: `${config.info.prefix}KNAWLEDGE`, fullthing: `${config.info.prefix}FULLTHING`, drears: `${config.prefix}DREARS`, giphy: `${config.info.prefix}GIPHY`, yt: `${config.info.prefix}YT`};
+var keys = {
+  knowledge: `${config.info.prefix}KNOWLEDGE`, knawledge: `${config.info.prefix}KNAWLEDGE`, fullthing: `${config.info.prefix}FULLTHING`, drears: `${config.prefix}DREARS`,
+  giphy: `${config.info.prefix}GIPHY`,
+  yt: `${config.info.prefix}YT`,
+  ytq: `${config.info.prefix}YTQ`,
+};
 
 var key = Object.keys(keys);
 
@@ -29,6 +34,8 @@ function toCall(method, msg){
     giphy(gcheck, msg);
   } else if (method == `${config.info.prefix}YT`){
     youtube(gcheck, msg);
+  } else if (method == `${config.info.prefix}YTQ`){
+    ytq(msg);
   } else {
     console.log("bad msg tried ", method)
     console.log('Bad message');
@@ -128,6 +135,10 @@ function youtube(passed, msg){
   ylog.base(passed, msg)
 }
 
+function ytq(msg){
+  ylog.queue(msg);
+}
+
 //Returns the method key in a string that matches
 //the command passed in by toCall
 function returnMethod(n){
@@ -165,10 +176,5 @@ function returnMethod(n){
 module.exports = {
   returnMethod: returnMethod,
   noGo: noGo,
-  knowledge: knowledge,
-  knawledge: knawledge,
-  drears: drears,
-  full: full,
   toCall: toCall,
-  giphy: giphy
 }
