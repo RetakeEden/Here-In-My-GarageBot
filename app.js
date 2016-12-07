@@ -80,7 +80,7 @@ discordjs.on('message', msg => {
         //Takes the returned method key, and passes it
         //with the message json object to the logic
         //function that then calls individual methods
-        messageLogic.toCall(call, msg);
+        messageLogic.toCall(call, msg, clie);
       }
       //else if they're not in a channel
     } else {
@@ -93,7 +93,7 @@ discordjs.on('message', msg => {
         //if the command is the giphy command
         if (toCall == `${config.info.prefix}GIPHY`){
           //call the giphy command in logic
-          messageLogic.toCall(toCall, msg);
+          messageLogic.toCall(toCall, msg, clie);
         } else if (toCall == `${config.info.prefix}YT`){
           messageLogic.toCall(toCall, msg, clie);
         } else {
