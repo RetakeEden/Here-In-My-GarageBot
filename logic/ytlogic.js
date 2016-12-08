@@ -29,13 +29,13 @@ function queue(msg){
 }
 
 function ytpb(msg, clie, conn){
-  client = clie;
-  var currconns = clie.voiceConnections.array();
-  if (currconns[0]) {
+  // client = clie;
+  // var currconns = clie.voiceConnections.array();
+  if (conn) {
     // if (jpd = true) {
       console.log(jpd, 'line 36');
       // jpd = false;
-      queued(currconns[0], msg);
+      // queued(currconns[0], msg);
     // } else if (jpd = false){
       console.log("transmitting, will wait")
     // }
