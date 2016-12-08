@@ -17,7 +17,8 @@ function base(passed, msg, clie){
   request(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=${final}&maxResults=1&key=${config.info.apiKEY}`, function(err, res, body){
     var testbody = JSON.parse(body)
     console.log(testbody);
-    msg.channel.sendMessage(testbody);
+    console.log(testbody.snippet);
+    console.log(testbody.id);
     // search.push(testbody.items[0].id.videoId);
     // searchname.push(testbody.items[0].snippet.title);
     // msg.channel.sendMessage("\"" +testbody.items[0].snippet.title + "\" has been added to queue.")
