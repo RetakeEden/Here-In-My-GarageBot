@@ -41,6 +41,7 @@ function ytpb(msg, clie, conn){
     }
   } else {
     if (msg.member.voiceChannel){
+      console.log('joining a channel line 44')
       msg.member.voiceChannel.join()
       .then(function(connection){
         queued(connection, msg);
@@ -58,6 +59,7 @@ function queued(conn, msg){
     msg.channel.sendMessage("Now playing: " + searchname[0]);
     var disp = conn.playStream(stream, streamOptions);
     disp.on('end', function(){
+      console.log('line 52 is being hit kek')
       search.splice(0,1);
       searchname.splice(0,1);
       if (search.length == 0) {
