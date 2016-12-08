@@ -65,7 +65,8 @@ function queued(conn, msg){
         conn.disconnect();
         msg.channel.sendMessage("Queue empty. Disconnecting!");
       } else {
-        console.log(jpd, 'line 69');
+        console.log("im being hit during ", search[0] )
+        console.log(jpd, 'line 68');
         jpd = true;
         ytpb(msg, client, conn)
       }
