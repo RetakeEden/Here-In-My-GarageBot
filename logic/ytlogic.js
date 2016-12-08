@@ -5,7 +5,7 @@ var config = require('../config.json'),
     searchname = [],
     main = require('../app.js'),
     client = '',
-    jpd = null;
+    jpd = false;
 
 function base(passed, msg, clie){
   if (passed[0] == "\'"){
@@ -59,7 +59,7 @@ function queued(conn, msg){
     msg.channel.sendMessage("Now playing: " + searchname[0]);
     var disp = conn.playStream(stream, streamOptions);
     disp.on('end', function(){
-      console.log('line 52 is being hit kek')
+      console.log('line 62 is being hit kek')
       search.splice(0,1);
       searchname.splice(0,1);
       if (search.length == 0) {
