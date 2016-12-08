@@ -32,13 +32,13 @@ function ytpb(msg, clie, conn){
   client = clie;
   var currconns = clie.voiceConnections.array();
   if (currconns[0]) {
-    if (jpd = true) {
+    // if (jpd = true) {
       console.log(jpd, 'line 36');
-      jpd = false;
+      // jpd = false;
       queued(currconns[0], msg);
-    } else if (jpd = false){
+    // } else if (jpd = false){
       console.log("transmitting, will wait")
-    }
+    // }
   } else {
     if (msg.member.voiceChannel){
       console.log('joining a channel line 44')
@@ -67,9 +67,9 @@ function queued(conn, msg){
         conn.disconnect();
         msg.channel.sendMessage("Queue empty. Disconnecting!");
       } else {
-        console.log("im being hit during ", search[0] )
-        console.log(jpd, 'line 68');
-        jpd = true;
+        // console.log("im being hit during ", search[0] )
+        // console.log(jpd, 'line 68');
+        // jpd = true;
         ytpb(msg, client, conn)
       }
     })
