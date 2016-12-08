@@ -19,7 +19,7 @@ function base(passed, msg, clie){
     console.log(testbody);
     console.log(testbody.items[0].snippet);
     console.log(testbody.items[0].id);
-    var dur = Date.parse(PT4M13S);
+    var dur = Date.parse("PT4M13S");
     console.log(dur);
     // search.push(testbody.items[0].id.videoId);
     // searchname.push(testbody.items[0].snippet.title);
