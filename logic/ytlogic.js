@@ -16,10 +16,11 @@ function base(passed, msg, clie){
   }
   request(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=${final}&maxResults=1&key=${config.info.apiKEY}`, function(err, res, body){
     var testbody = JSON.parse(body)
-    search.push(testbody.items[0].id.videoId);
-    searchname.push(testbody.items[0].snippet.title);
-    msg.channel.sendMessage("\"" +testbody.items[0].snippet.title + "\" has been added to queue.")
-    ytpb(msg, clie);
+    console.log(testbody);
+    // search.push(testbody.items[0].id.videoId);
+    // searchname.push(testbody.items[0].snippet.title);
+    // msg.channel.sendMessage("\"" +testbody.items[0].snippet.title + "\" has been added to queue.")
+    // ytpb(msg, clie);
   })
 }
 
@@ -29,26 +30,14 @@ function queue(msg){
 }
 
 function ytpb(msg, clie, conn){
-  // client = clie;
-  // var currconns = clie.voiceConnections.array();
-  if (conn) {
-    // if (jpd = true) {
-      console.log(jpd, 'line 36');
-      // jpd = false;
-      // queued(currconns[0], msg);
-    // } else if (jpd = false){
-      console.log("transmitting, will wait")
-    // }
+  if (msg.member.voiceChannel){
+    console.log('joining a channel line 44')
+    msg.member.voiceChannel.join()
+    .then(function(connection){
+      queued(connection, msg);
+    })
   } else {
-    if (msg.member.voiceChannel){
-      console.log('joining a channel line 44')
-      msg.member.voiceChannel.join()
-      .then(function(connection){
-        queued(connection, msg);
-      })
-    } else {
-      msg.channel.sendMessage("You're not in a voice channel!")
-    }
+    msg.channel.sendMessage("You're not in a voice channel!")
   }
 }
 
@@ -67,6 +56,7 @@ function queued(conn, msg){
         conn.disconnect();
         msg.channel.sendMessage("Queue empty. Disconnecting!");
       } else {
+
         // console.log("im being hit during ", search[0] )
         // console.log(jpd, 'line 68');
         // jpd = true;
