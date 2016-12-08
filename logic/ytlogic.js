@@ -1,9 +1,9 @@
 var config = require('../config.json'),
     ytdl = require('ytdl-core'),
     request = require('request'),
+    parse = require('./parse.js'),
     search = [],
     searchname = [],
-    main = require('../app.js'),
     client = '',
     jpd = false;
 
@@ -19,7 +19,7 @@ function base(passed, msg, clie){
     console.log(testbody);
     console.log(testbody.items[0].snippet);
     console.log(testbody.items[0].id);
-    var dur = Date.parse("PT4M13S");
+    var dur = parse.convertTime("PT4M13S");
     console.log(dur);
     // search.push(testbody.items[0].id.videoId);
     // searchname.push(testbody.items[0].snippet.title);
