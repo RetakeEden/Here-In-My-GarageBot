@@ -93,8 +93,8 @@ function ytpb(msg){
 
 function yskip(msg){
   msg.channel.sendMessage(`Skipping: ${searchname[0]}`);
-  search.shift();
-  searchname.shift();
+  // search.shift();
+  // searchname.shift();
   jskiped = true;
   if (search.length !=0){
     msg.channel.sendMessage(`Now Playing: ${searchname[0]}`);
