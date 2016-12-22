@@ -131,6 +131,8 @@ function playNext(msg, conn){
     searchname.splice(0,1);
     ytpb(msg);
   } else {
+    search.splice(0,1);
+    searchname.splice(0,1);
     jskiped = false;
     if (search.length == 0) {
       conn.disconnect();
