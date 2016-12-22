@@ -83,12 +83,12 @@ function ytpb(msg){
 }
 
 function yskip(msg){
-  if (disp == null) {
-    msg.channel.sendMessage("Nothing to skip!");
-  } else {
-    msg.channel.sendMessage(`Skipping: ${searchname[0]}`);
-    ytpb(msg);
-  }
+  // if (disp == null) {
+  //   msg.channel.sendMessage("Nothing to skip!");
+  // } else {
+  //   msg.channel.sendMessage(`Skipping: ${searchname[0]}`);
+  //   ytpb(msg);
+  // }
 }
 
 function playNext(msg, conn){
