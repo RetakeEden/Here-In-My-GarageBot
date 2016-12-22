@@ -102,7 +102,6 @@ function playNext(msg, conn){
       conn.disconnect();
       msg.channel.sendMessage("Queue empty. Disconnecting!");
     } else {
-      msg.channel.sendMessage(`Currently Playing: ${searchname[0]}`);
       ytpb(msg)
     }
 }
