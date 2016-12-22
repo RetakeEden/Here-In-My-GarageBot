@@ -85,7 +85,13 @@ function ytpb(msg){
 }
 
 function yskip(msg){
-  playNext(msg, curconn);
+  if (disp == null) {
+    msg.channel.sendMessage("Nothing to skip!");
+  } else {
+    disp = null;
+    msg.channel.sendMessage(`Skipping: ${searchname[0]}`);
+    playNext(msg, curconn);
+  }
 }
 
 function playNext(msg, conn){
