@@ -89,12 +89,7 @@ function yskip(msg){
   searchname.shift();
   console.log(search, "post shift line 90");
   console.log(searchname, "post shift line 91");
-  if (curconn) {
-    curconn.disconnect();
-    ytpb(msg);
-  } else {
-    ytpb(msg);
-  }
+  ytpb(msg);
   // if (disp == null) {
   //   msg.channel.sendMessage("Nothing to skip!");
   // } else {
