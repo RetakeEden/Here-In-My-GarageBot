@@ -18,15 +18,23 @@ function base(passed, msg){
   request(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=${final}&maxResults=1&key=${config.info.apiKEY}`, function(err, res, body){
     if (search.length == 0) {
       var testbody = JSON.parse(body)
-      search.push(testbody.items[0].id.videoId);
-      searchname.push(testbody.items[0].snippet.title);
-      msg.channel.sendMessage("\"" +testbody.items[0].snippet.title + "\" has been added to queue.")
+      if (!testbody.items[0].id.videoId){
+        msg.channel.sendMessage("Could not find a video with that search string.");
+      } else {
+        search.push(testbody.items[0].id.videoId);
+        searchname.push(testbody.items[0].snippet.title);
+        msg.channel.sendMessage("\"" +testbody.items[0].snippet.title + "\" has been added to queue.")
       ytpb(msg);
+      }
     } else {
       var testbody = JSON.parse(body)
-      search.push(testbody.items[0].id.videoId);
-      searchname.push(testbody.items[0].snippet.title);
-      msg.channel.sendMessage("\"" +testbody.items[0].snippet.title + "\" has been added to queue.")
+      if (!testbody.items[0].id.videoId) {
+        msg.channel.sendMessage("Could not find a video with that search string.");
+      } else {
+        search.push(testbody.items[0].id.videoId);
+        searchname.push(testbody.items[0].snippet.title);
+        msg.channel.sendMessage("\"" +testbody.items[0].snippet.title + "\" has been added to queue.")
+      }
     }
   })
 }
