@@ -85,7 +85,7 @@ function ytpb(msg){
 }
 
 function yskip(msg){
-  playNext(msg, currconn);
+  playNext(msg, curconn);
 }
 
 function playNext(msg, conn){
