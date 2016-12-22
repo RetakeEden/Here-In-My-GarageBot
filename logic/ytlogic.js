@@ -71,8 +71,7 @@ function ytpb(msg){
           msg.channel.sendMessage("There was an error!");
         })
       } else {
-        msg.channel.sendMessage(`Currently Playing: ${searchname[0]}`);
-        msg.channel.sendMessage("curp in non null disp line 83");
+        msg.channel.sendMessage(`Skipping: ${searchname[0]}`);
         if (searchname.length > 1){
           msg.channel.sendMessage(`Up Next: ${searchname[1]}`);
         }
