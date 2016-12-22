@@ -129,6 +129,7 @@ function playNext(msg, conn){
   if (jskiped = false) {
     search.splice(0,1);
     searchname.splice(0,1);
+    ytpb(msg);
   } else {
     jskiped = false;
     if (search.length == 0) {
