@@ -150,12 +150,8 @@ function returnMethod(n){
   var y = x.split('')[0]
   //make all messages uniform
   x = x.toLowerCase()
-  //cut them into an array and reverse them
-  x = x.split('').reverse();
-  //Pull off the last value, the prefix
-  x.pop();
-  //Unreverse the array
-  x.reverse();
+  //cut them into an array and shift first away
+  x = x.split('').shift();
   //Rejoin the array into a string
   x = x.join('');
   //checks in keys if a message matches a key value
