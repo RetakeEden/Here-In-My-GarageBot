@@ -71,11 +71,13 @@ function ytpb(msg){
           msg.channel.sendMessage("There was an error!");
         })
       } else {
-        msg.channel.sendMessage(`Skipping: ${searchname[0]}`);
         if (searchname.length > 1){
           msg.channel.sendMessage(`Up Next: ${searchname[1]}`);
         }
         disp = connection.playStream(stream, streamOptions);
+        if (disp != null) {
+          msg.channel.sendMessage(`Currently Playing: ${searchname[0]}`);
+        }
       }
     })
   } else {
@@ -87,6 +89,7 @@ function yskip(msg){
   if (disp == null) {
     msg.channel.sendMessage("Nothing to skip!");
   } else {
+    msg.channel.sendMessage(`Skipping: ${searchname[0]}`);
     ytpb(msg);
   }
 }
