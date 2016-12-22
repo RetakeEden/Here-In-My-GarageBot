@@ -83,6 +83,14 @@ function ytpb(msg){
 }
 
 function yskip(msg){
+  search.shift();
+  searchname.shift();
+  if (curconn) {
+    curconn.disconnect();
+    ytpb(msg);
+  } else {
+    ytpb(msg);
+  }
   // if (disp == null) {
   //   msg.channel.sendMessage("Nothing to skip!");
   // } else {
@@ -92,6 +100,9 @@ function yskip(msg){
 }
 
 function clearq(msg){
+  if (search.length > 0 || searchname.length > 0) {
+    msg.channel.sendMessage("Clearing Queue");
+  }
   search = [];
   searchname = [];
   disp = null;
@@ -118,5 +129,5 @@ module.exports = {
   queue: queue,
   yskip: yskip,
   clearq: clearq,
-  
+
 }
