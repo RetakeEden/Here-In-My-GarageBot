@@ -83,8 +83,12 @@ function ytpb(msg){
 }
 
 function yskip(msg){
+  console.log(search, "pre shift line 86");
+  console.log(searchname, "pre shift line 87");
   search.shift();
   searchname.shift();
+  console.log(search, "post shift line 90");
+  console.log(searchname, "post shift line 91");
   if (curconn) {
     curconn.disconnect();
     ytpb(msg);
