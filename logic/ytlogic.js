@@ -24,7 +24,7 @@ function base(passed, msg, clie){
     search.push(testbody.items[0].id.videoId);
     searchname.push(testbody.items[0].snippet.title);
     msg.channel.sendMessage("\"" +testbody.items[0].snippet.title + "\" has been added to queue.")
-    ytpb(msg, clie);
+    ytpb(msg);
   })
 }
 
@@ -33,48 +33,44 @@ function queue(msg){
   console.log(search);
 }
 
-function ytpb(msg, clie, conn){
-  if (conn){
-    if (jpd == true) {
-      msg.channel.sendMessage("Currently playing. Adding to queue");
-    } else {
-      queued(conn, msg)
-    }
-  } else {
-    if (msg.member.voiceChannel){
-      msg.member.voiceChannel.join()
-      .then(function(connection){
-        queued(connection, msg);
-      })
-    } else {
-      msg.channel.sendMessage("You're not in a voice channel!")
-    }
-  }
-}
+function ytpb(msg){
+  const streamOptions = { seek: 0, volume: 1 };
+  var stream = ytdl(`https://www.youtube.com/watch?v=${search[0]}`, {filter: "audioonly"});
 
-function queued(conn, msg){
-  jpd = true;
-  console.log(conn);
-  if (search.length != 0){
-    const streamOptions = { seek: 0, volume: 1 };
-    var stream = ytdl(`https://www.youtube.com/watch?v=${search[0]}`, {filter: "audioonly"})
-    msg.channel.sendMessage("Now playing: " + searchname[0]);
-    const disp = conn.playStream(stream, streamOptions);
-    disp.on('end', function(){
-      search.splice(0,1);
-      searchname.splice(0,1);
-      if (search.length == 0) {
-        jpd = false;
-        conn.disconnect();
-        msg.channel.sendMessage("Queue empty. Disconnecting!");
+  if (msg.member.voiceChannel){
+    msg.member.voiceChannel.join()
+    .then(function(connection){
+      if (disp == null){
+
+        disp = connection.playStream(stream, streamOptions);
+
+        disp.on('end', () => {
+          disp = null;
+          playNext(msg);
+        });
+
+        disp.on('error', (err) => {
+          console.log(err)
+          msg.channel.sendMessage("There was an error!");
+        })
       } else {
-        jpd = false;
-        ytpb(msg, client, conn)
+        disp = connection.playStream(stream, streamOptions);
       }
     })
   } else {
-    msg.channel.sendMessage("Queue empty. Disconnecting!");
+    msg.channel.sendMessage("You're not in a voice channel!")
   }
+}
+
+function playNext(msg){
+  search.splice(0,1);
+  searchname.splice(0,1);
+    if (search.length == 0) {
+      conn.disconnect();
+      msg.channel.sendMessage("Queue empty. Disconnecting!");
+    } else {
+      ytpb(msg)
+    }
 }
 
 module.exports = {
