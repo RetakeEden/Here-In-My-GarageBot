@@ -53,6 +53,8 @@ function ytpb(msg, clie, conn){
 }
 
 function queued(conn, msg){
+  console.log(conn.speaking);
+  msg.channel.sendMessage(conn.speaking);
   if (search.length != 0){
     const streamOptions = { seek: 0, volume: 1 };
     var stream = ytdl(`https://www.youtube.com/watch?v=${search[0]}`, {filter: "audioonly"})
