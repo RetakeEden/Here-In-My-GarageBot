@@ -151,7 +151,8 @@ function returnMethod(n){
   //make all messages uniform
   x = x.toLowerCase()
   //cut them into an array and shift first away
-  x = x.split('').shift();
+  x = x.split('');
+  x.shift();
   //Rejoin the array into a string
   x = x.join('');
   //checks in keys if a message matches a key value
