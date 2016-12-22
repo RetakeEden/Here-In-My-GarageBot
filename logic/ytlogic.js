@@ -31,7 +31,14 @@ function base(passed, msg, clie){
 }
 
 function queue(msg){
-  msg.channel.sendMessage("The current queue is: " + searchname)
+  if (searchname.length > 1) {
+    nextup = searchname.shift();
+    msg.channel.sendMessage(`Currently Playing: \"${searchname[0]}\"`);
+    msg.channel.sendMessage(`In Queue: ${nextup}`);
+  } else {
+    msg.channel.sendMessage("Currently Playing: " + searchname)
+    msg.channel.sendMessage("There is nothing else in queue");
+  }
   console.log(search);
 }
 
@@ -43,7 +50,10 @@ function ytpb(msg){
     msg.member.voiceChannel.join()
     .then(function(connection){
       if (disp == null){
-
+        msg.channel.sendMessage(`Currently Playing: ${searchname[0]}`);
+        if (searchname.length > 1) {
+          msg.channel.sendMessage(`Up Next: ${searchname[1]}`);
+        }
         disp = connection.playStream(stream, streamOptions);
 
         disp.on('end', () => {
@@ -64,6 +74,10 @@ function ytpb(msg){
   } else {
     msg.channel.sendMessage("You're not in a voice channel!")
   }
+}
+
+function yskip(msg){
+  
 }
 
 function playNext(msg){
