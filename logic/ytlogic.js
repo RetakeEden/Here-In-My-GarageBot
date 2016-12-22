@@ -88,11 +88,6 @@ function yskip(msg){
   if (disp == null) {
     msg.channel.sendMessage("Nothing to skip!");
   } else {
-    console.log(disp, "line 91, not null yet");
-    disp = null;
-    msg.channel.sendMessage(`Skipping: ${searchname[0]}`);
-    search.splice(0,1);
-    searchname.splice(0,1);
     ytpb(msg);
   }
 }
