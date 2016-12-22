@@ -34,7 +34,6 @@ function queue(msg){
 }
 
 function ytpb(msg, clie, conn){
-  console.log(testcli);
   if (conn){
     if (jpd == true) {
       msg.channel.sendMessage("Currently playing. Adding to queue");
