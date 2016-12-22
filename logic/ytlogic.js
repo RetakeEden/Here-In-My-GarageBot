@@ -61,8 +61,6 @@ function ytpb(msg){
 
         disp.on('end', () => {
           disp = null;
-          search.splice(0,1);
-          searchname.splice(0,1);
           playNext(msg, conn);
         });
 
@@ -84,6 +82,8 @@ function yskip(msg){
 }
 
 function playNext(msg, conn){
+  search.splice(0,1);
+  searchname.splice(0,1);
     if (search.length == 0) {
       msg.voiceChannel.disconnect();
       msg.channel.sendMessage("Queue empty. Disconnecting!");
