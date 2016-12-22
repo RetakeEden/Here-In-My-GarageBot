@@ -89,6 +89,7 @@ function yskip(msg){
   searchname.shift();
   jskiped = true;
   if (search.length !=0){
+    msg.channel.sendMessage(`Now Playing: ${searchname[0]}`);
     ytpb(msg);
   }
   // if (disp == null) {
