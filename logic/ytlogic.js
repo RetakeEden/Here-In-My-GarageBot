@@ -102,4 +102,5 @@ function playNext(msg, conn){
 module.exports = {
   base: base,
   queue: queue,
+  yskip: yskip,
 }
