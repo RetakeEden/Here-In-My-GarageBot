@@ -91,9 +91,9 @@ function yskip(msg){
     console.log(disp, "line 91, not null yet");
     disp = null;
     msg.channel.sendMessage(`Skipping: ${searchname[0]}`);
-    console.log(search, "line 90ish");
-    console.log(searchname, "line 91ish");
-    playNext(msg, curconn);
+    search.splice(0,1);
+    searchname.splice(0,1);
+    ytpb(msg);
   }
 }
 
