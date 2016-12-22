@@ -21,6 +21,8 @@ function base(passed, msg){
       if (!testbody.items.length == 0){
         msg.channel.sendMessage("Could not find a video with that search string.");
       } else {
+        console.log(testbody.items);
+        console.log(testbody);
         search.push(testbody.items[0].id.videoId);
         searchname.push(testbody.items[0].snippet.title);
         msg.channel.sendMessage("\"" +testbody.items[0].snippet.title + "\" has been added to queue.")
