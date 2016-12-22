@@ -75,9 +75,6 @@ function ytpb(msg){
           msg.channel.sendMessage(`Up Next: ${searchname[1]}`);
         }
         disp = connection.playStream(stream, streamOptions);
-        if (disp != null) {
-          msg.channel.sendMessage(`Currently Playing: ${searchname[0]}`);
-        }
       }
     })
   } else {
