@@ -2,6 +2,7 @@ var Discord = require('discord.js');
 var config = require('./config.json');
 var parseLogic = require('./logic/parse.js');
 var messageLogic = require('./logic/messagecheck.js');
+var ylog = require('./logic/ytlogic.js');
 
 //substantiates the bot client
 var discordjs = new Discord.Client();
@@ -38,6 +39,7 @@ discordjs.on('message', msg => {
       msg.channel.sendMessage("Hello "+msg.author.username + ". Have you seen my 47 lambourghinis??");
     } else if (umsg == "TAI PLS GO"){
       //bot leaves the current voice channel
+      ylog.clearq(msg);
       //if no voice channel, does nothing
       msg.member.voiceChannel.leave();
       //delets the command message (requires bot to be

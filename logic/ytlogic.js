@@ -91,6 +91,15 @@ function yskip(msg){
   // }
 }
 
+function clearq(msg){
+  search = [];
+  searchname = [];
+  disp = null;
+  if (curconn){
+    curconn.disconnect();
+  }
+}
+
 function playNext(msg, conn){
   console.log(search, "line 100ish")
   console.log(searchname, "line 101ish");
