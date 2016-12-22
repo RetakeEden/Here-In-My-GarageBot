@@ -90,15 +90,15 @@ function yskip(msg){
   } else {
     disp = null;
     msg.channel.sendMessage(`Skipping: ${searchname[0]}`);
-    console.log(search, "line 100ish");
-    console.log(searchname, "line 100ish");
+    console.log(search, "line 90ish");
+    console.log(searchname, "line 91ish");
     playNext(msg, curconn);
   }
 }
 
 function playNext(msg, conn){
   console.log(search, "line 100ish")
-  console.log(searchname, "line 100ish");
+  console.log(searchname, "line 101ish");
   search.splice(0,1);
   searchname.splice(0,1);
     if (search.length == 0) {
