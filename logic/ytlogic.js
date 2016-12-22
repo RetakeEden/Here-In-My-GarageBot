@@ -5,7 +5,7 @@ var config = require('../config.json'),
     search = [],
     searchname = [],
     client = '',
-    jpd = false;
+    disp = null;
 
 function base(passed, msg, clie){
   if (passed[0] == "\'"){
