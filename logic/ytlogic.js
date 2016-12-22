@@ -4,10 +4,10 @@ var config = require('../config.json'),
     parse = require('./parse.js'),
     search = [],
     searchname = [],
-    client = '',
+    curconn = '',
     disp = null;
 
-function base(passed, msg, clie){
+function base(passed, msg){
   if (passed[0] == "\'"){
     return;
   } else {
@@ -53,6 +53,7 @@ function ytpb(msg){
   if (msg.member.voiceChannel){
     msg.member.voiceChannel.join()
     .then(function(connection){
+      curconn = connection;
       if (disp == null){
         msg.channel.sendMessage(`Currently Playing: ${searchname[0]}`);
         if (searchname.length > 1) {
@@ -84,14 +85,12 @@ function ytpb(msg){
 }
 
 function yskip(msg){
-
+  playNext(msg, currconn);
 }
 
 function playNext(msg, conn){
   search.splice(0,1);
   searchname.splice(0,1);
-  console.log(search , "line 93");
-  console.log(searchname, "line 94");
     if (search.length == 0) {
       conn.disconnect();
       msg.channel.sendMessage("Queue empty. Disconnecting!");

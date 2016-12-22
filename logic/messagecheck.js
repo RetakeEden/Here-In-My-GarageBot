@@ -9,13 +9,14 @@ var keys = {
   giphy: `${config.info.prefix}GIPHY`,
   yt: `${config.info.prefix}YT`,
   queue: `${config.info.prefix}QUEUE`,
+  yskip: `${config.info.prefix}YSKIP`,
 };
 
 var key = Object.keys(keys);
 
 //Calls the specific method for the bot based on
 //output of returnMethod
-function toCall(method, msg, clie){
+function toCall(method, msg){
   //if the key is knowledge, call knowledge
   if (method == `${config.info.prefix}KNOWLEDGE`){
     knowledge(msg);
@@ -33,9 +34,11 @@ function toCall(method, msg, clie){
   } else if (method == `${config.info.prefix}GIPHY`){
     giphy(gcheck, msg);
   } else if (method == `${config.info.prefix}YT`){
-    ylog.base(gcheck, msg, clie);
+    ylog.base(gcheck, msg);
   } else if (method == `${config.info.prefix}QUEUE`){
     ylog.queue(msg)
+  } else if (method == `${config.info.prefix}YSKIP`){
+    ylog.yskip(msg);
   } else {
     console.log("bad msg tried ", method)
     console.log('Bad message');
