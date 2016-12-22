@@ -57,10 +57,11 @@ function ytpb(msg){
         disp = connection.playStream(stream, streamOptions);
 
         disp.on('end', () => {
+          conn = disp;
           disp = null;
           search.splice(0,1);
           searchname.splice(0,1);
-          playNext(msg);
+          playNext(msg, conn);
         });
 
         disp.on('error', (err) => {
@@ -77,10 +78,10 @@ function ytpb(msg){
 }
 
 function yskip(msg){
-  
+
 }
 
-function playNext(msg){
+function playNext(msg, conn){
     if (search.length == 0) {
       conn.disconnect();
       msg.channel.sendMessage("Queue empty. Disconnecting!");
