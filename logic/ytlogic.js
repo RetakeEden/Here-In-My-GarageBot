@@ -38,12 +38,10 @@ function queue(msg){
     msg.channel.sendMessage("There is nothing in queue.");
   } else if (searchname.length > 1) {
     msg.channel.sendMessage(`Currently Playing: \"${searchname[0]}\"`);
-    toplay.shift();
     console.log(toplay, "line 40");
     console.log(searchname, "line 41");
     msg.channel.sendMessage(`Up Next: ${searchname[1]}`);
     if (searchname.length > 2) {
-      toplay.shift();
       console.log(toplay, "line 45");
       console.log(searchname, "line 46");
       msg.channel.sendMessage(`In Queue:${toplay}`)
@@ -63,7 +61,6 @@ function ytpb(msg){
     .then(function(connection){
       if (disp == null){
         msg.channel.sendMessage(`Currently Playing: ${searchname[0]}`);
-        msg.channel.sendMessage("curp in null disp line 66")
         if (searchname.length > 1) {
           msg.channel.sendMessage(`Up Next: ${searchname[1]}`);
         }
@@ -106,10 +103,6 @@ function playNext(msg, conn){
       msg.channel.sendMessage("Queue empty. Disconnecting!");
     } else {
       msg.channel.sendMessage(`Currently Playing: ${searchname[0]}`);
-      msg.channel.sendMessage("curp playnext line 109");
-      if (searchname.length > 1) {
-        msg.channel.sendMessage(`Up Next: ${searchname[1]}`);
-      }
       ytpb(msg)
     }
 }
