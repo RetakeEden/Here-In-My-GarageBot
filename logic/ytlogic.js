@@ -5,8 +5,7 @@ var config = require('../config.json'),
     search = [],
     searchname = [],
     client = '',
-    jpd = false,
-    testcli = this;
+    jpd = false;
 
 function base(passed, msg, clie){
   if (passed[0] == "\'"){
@@ -35,11 +34,13 @@ function queue(msg){
 }
 
 function ytpb(msg, clie, conn){
-  msg.channel.sendMessage("=====TestCli logged=====");
-  msg.channel.sendMessage("THIS IS A DEBUG MESSAGE");
   console.log(testcli);
   if (conn){
-    queued(conn, msg)
+    if (jpd == true) {
+      msg.channel.sendMessage("Currently playing. Adding to queue");
+    } else {
+      queued(conn, msg)
+    }
   } else {
     if (msg.member.voiceChannel){
       msg.member.voiceChannel.join()
@@ -53,8 +54,8 @@ function ytpb(msg, clie, conn){
 }
 
 function queued(conn, msg){
-  console.log(conn.speaking);
-  msg.channel.sendMessage(conn.speaking);
+  jpd = true;
+  console.log(conn);
   if (search.length != 0){
     const streamOptions = { seek: 0, volume: 1 };
     var stream = ytdl(`https://www.youtube.com/watch?v=${search[0]}`, {filter: "audioonly"})
@@ -64,9 +65,11 @@ function queued(conn, msg){
       search.splice(0,1);
       searchname.splice(0,1);
       if (search.length == 0) {
+        jpd = false;
         conn.disconnect();
         msg.channel.sendMessage("Queue empty. Disconnecting!");
       } else {
+        jpd = false;
         ytpb(msg, client, conn)
       }
     })
