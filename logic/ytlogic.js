@@ -34,7 +34,9 @@ function queue(msg){
   var toplay = searchname;
   console.log(toplay, "line 35");
   console.log(searchname, "line 36");
-  if (searchname.length > 1) {
+  if (searchname.length == 0){
+    msg.channel.sendMessage("There is nothing in queue.");
+  } else if (searchname.length > 1) {
     msg.channel.sendMessage(`Currently Playing: \"${searchname[0]}\"`);
     toplay.shift();
     console.log(toplay, "line 40");
@@ -61,6 +63,7 @@ function ytpb(msg){
     .then(function(connection){
       if (disp == null){
         msg.channel.sendMessage(`Currently Playing: ${searchname[0]}`);
+        msg.channel.sendMessage("curp in null disp line 66")
         if (searchname.length > 1) {
           msg.channel.sendMessage(`Up Next: ${searchname[1]}`);
         }
@@ -77,6 +80,7 @@ function ytpb(msg){
         })
       } else {
         msg.channel.sendMessage(`Currently Playing: ${searchname[0]}`);
+        msg.channel.sendMessage("curp in non null disp line 83");
         if (searchname.length > 1){
           msg.channel.sendMessage(`Up Next: ${searchname[1]}`);
         }
@@ -102,6 +106,7 @@ function playNext(msg, conn){
       msg.channel.sendMessage("Queue empty. Disconnecting!");
     } else {
       msg.channel.sendMessage(`Currently Playing: ${searchname[0]}`);
+      msg.channel.sendMessage("curp playnext line 109");
       if (searchname.length > 1) {
         msg.channel.sendMessage(`Up Next: ${searchname[1]}`);
       }
