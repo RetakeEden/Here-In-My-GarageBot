@@ -18,7 +18,7 @@ function base(passed, msg){
   request(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=${final}&maxResults=1&key=${config.info.apiKEY}`, function(err, res, body){
     if (search.length == 0) {
       var testbody = JSON.parse(body)
-      if (!testbody.items[0].id.videoId){
+      if (!testbody.items.length == 0){
         msg.channel.sendMessage("Could not find a video with that search string.");
       } else {
         search.push(testbody.items[0].id.videoId);
@@ -28,7 +28,7 @@ function base(passed, msg){
       }
     } else {
       var testbody = JSON.parse(body)
-      if (!testbody.items[0].id.videoId) {
+      if (!testbody.items.length == 0) {
         msg.channel.sendMessage("Could not find a video with that search string.");
       } else {
         search.push(testbody.items[0].id.videoId);
