@@ -5,7 +5,8 @@ var config = require('../config.json'),
     search = [],
     searchname = [],
     curconn = '',
-    disp = null;
+    disp = null,
+    jskiped = false;
 
 function base(passed, msg){
   if (passed[0] == "\'"){
@@ -89,6 +90,7 @@ function yskip(msg){
   searchname.shift();
   console.log(search, "post shift line 90");
   console.log(searchname, "post shift line 91");
+  jskiped = true;
   ytpb(msg);
   // if (disp == null) {
   //   msg.channel.sendMessage("Nothing to skip!");
@@ -113,14 +115,18 @@ function clearq(msg){
 function playNext(msg, conn){
   console.log(search, "line 100ish")
   console.log(searchname, "line 101ish");
-  search.splice(0,1);
-  searchname.splice(0,1);
+  if (jskiped = false) {
+    search.splice(0,1);
+    searchname.splice(0,1);
+  } else {
+    jskiped = false;
     if (search.length == 0) {
       conn.disconnect();
       msg.channel.sendMessage("Queue empty. Disconnecting!");
     } else {
       ytpb(msg)
     }
+  }
 }
 
 module.exports = {
