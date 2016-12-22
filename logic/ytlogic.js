@@ -98,7 +98,7 @@ function yskip(msg){
   jskiped = true;
   if (search.length !=0){
     msg.channel.sendMessage(`Now Playing: ${searchname[0]}`);
-    ytpb(msg);
+    playNext(msg, curconn);
   } else {
     curconn.disconnect();
     msg.channel.sendMessage("Queue empty. Disconnecting!")
