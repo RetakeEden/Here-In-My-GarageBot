@@ -33,9 +33,9 @@ function toCall(method, msg, clie){
   } else if (method == `${config.info.prefix}GIPHY`){
     giphy(gcheck, msg);
   } else if (method == `${config.info.prefix}YT`){
-    youtube(gcheck, msg, clie);
+    ylog.base(gcheck, msg, clie);
   } else if (method == `${config.info.prefix}QUEUE`){
-    ytq(msg)
+    ylog.queue(msg)
   } else {
     console.log("bad msg tried ", method)
     console.log('Bad message');
@@ -131,13 +131,6 @@ function giphy(passed, msg){
   })
 }
 
-function youtube(passed, msg, clie){
-  ylog.base(passed, msg, clie)
-}
-
-function ytq(msg){
-  ylog.queue(msg);
-}
 
 //Returns the method key in a string that matches
 //the command passed in by toCall

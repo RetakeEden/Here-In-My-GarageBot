@@ -5,7 +5,8 @@ var config = require('../config.json'),
     search = [],
     searchname = [],
     client = '',
-    jpd = false;
+    jpd = false,
+    testcli = this;
 
 function base(passed, msg, clie){
   if (passed[0] == "\'"){
@@ -34,6 +35,8 @@ function queue(msg){
 }
 
 function ytpb(msg, clie, conn){
+  msg.channel.sendMessage(testcli);
+  msg.channel.sendMessage("=====TestCli^^=====");
   if (conn){
     queued(conn, msg)
   } else {
