@@ -84,14 +84,13 @@ function ytpb(msg){
 }
 
 function yskip(msg){
-  console.log(search, "pre shift line 86");
-  console.log(searchname, "pre shift line 87");
+  msg.channel.sendMessage(`Skipping: ${searchname[0]}`);
   search.shift();
   searchname.shift();
-  console.log(search, "post shift line 90");
-  console.log(searchname, "post shift line 91");
   jskiped = true;
-  ytpb(msg);
+  if (search.length !=0){
+    ytpb(msg);
+  }
   // if (disp == null) {
   //   msg.channel.sendMessage("Nothing to skip!");
   // } else {
