@@ -32,8 +32,10 @@ function base(passed, msg, clie){
 
 function queue(msg){
   if (searchname.length > 1) {
-    nextup = searchname.shift();
-    msg.channel.sendMessage(`Currently Playing: \"${searchname[0]}\"`);
+    playwith = searchname;
+    current = playwith.shift();
+    nextup = playwith;
+    msg.channel.sendMessage(`Currently Playing: \"${current}\"`);
     msg.channel.sendMessage(`In Queue: ${nextup}`);
   } else {
     msg.channel.sendMessage("Currently Playing: " + searchname)
@@ -55,9 +57,9 @@ function ytpb(msg){
           msg.channel.sendMessage(`Up Next: ${searchname[1]}`);
         }
         disp = connection.playStream(stream, streamOptions);
+        var conn = disp;
 
         disp.on('end', () => {
-          conn = disp;
           disp = null;
           search.splice(0,1);
           searchname.splice(0,1);
@@ -83,7 +85,7 @@ function yskip(msg){
 
 function playNext(msg, conn){
     if (search.length == 0) {
-      conn.disconnect();
+      msg.voiceChannel.disconnect();
       msg.channel.sendMessage("Queue empty. Disconnecting!");
     } else {
       ytpb(msg)
