@@ -93,6 +93,7 @@ function yskip(msg){
     ytpb(msg);
   } else {
     curconn.disconnect();
+    msg.channel.sendMessage("Queue empty. Disconnecting!")
   }
   // if (disp == null) {
   //   msg.channel.sendMessage("Nothing to skip!");
