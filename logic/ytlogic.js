@@ -35,8 +35,9 @@ function queue(msg){
 }
 
 function ytpb(msg, clie, conn){
-  msg.channel.sendMessage(testcli);
-  msg.channel.sendMessage("=====TestCli^^=====");
+  msg.channel.sendMessage("=====TestCli logged=====");
+  msg.channel.sendMessage("THIS IS A DEBUG MESSAGE");
+  console.log(testcli);
   if (conn){
     queued(conn, msg)
   } else {
