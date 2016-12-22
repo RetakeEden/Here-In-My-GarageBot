@@ -91,6 +91,8 @@ function yskip(msg){
   if (search.length !=0){
     msg.channel.sendMessage(`Now Playing: ${searchname[0]}`);
     ytpb(msg);
+  } else {
+    curconn.disconnect();
   }
   // if (disp == null) {
   //   msg.channel.sendMessage("Nothing to skip!");
