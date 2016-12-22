@@ -31,17 +31,19 @@ function base(passed, msg, clie){
 }
 
 function queue(msg){
+  var toplay = searchname;
   if (searchname.length > 1) {
-    playwith = searchname;
-    current = playwith.shift();
-    nextup = playwith;
-    msg.channel.sendMessage(`Currently Playing: \"${current}\"`);
-    msg.channel.sendMessage(`In Queue: ${nextup}`);
+    msg.channel.sendMessage(`Currently Playing: \"${searchname[0]}\"`);
+    toplay.shift();
+    msg.channel.sendMessage(`Up Next: ${searchname[1]}`);
+    if (searchname.length > 2) {
+      toplay.shift();
+      msg.channel.sendMessage(`In Queue:${toplay}`)
+    }
   } else {
     msg.channel.sendMessage("Currently Playing: " + searchname)
     msg.channel.sendMessage("There is nothing else in queue");
   }
-  console.log(search);
 }
 
 function ytpb(msg){
@@ -69,6 +71,10 @@ function ytpb(msg){
           msg.channel.sendMessage("There was an error!");
         })
       } else {
+        msg.channel.sendMessage(`Currently Playing: ${searchname[0]}`);
+        if (searchname.length > 1){
+          msg.channel.sendMessage(`Up Next: ${searchname[1]}`);
+        }
         disp = connection.playStream(stream, streamOptions);
       }
     })
@@ -84,10 +90,16 @@ function yskip(msg){
 function playNext(msg, conn){
   search.splice(0,1);
   searchname.splice(0,1);
+  console.log(search , "line 93");
+  console.log(searchname, "line 94");
     if (search.length == 0) {
-      msg.voiceChannel.disconnect();
+      disconnect();
       msg.channel.sendMessage("Queue empty. Disconnecting!");
     } else {
+      msg.channel.sendMessage(`Currently Playing: ${searchname[0]}`);
+      if (searchname.length > 1) {
+        msg.channel.sendMessage(`Up Next: ${searchname[1]}`);
+      }
       ytpb(msg)
     }
 }
