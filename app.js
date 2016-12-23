@@ -17,12 +17,14 @@ discordjs.on("ready", () => {
 //called on every message
 discordjs.on('message', msg => {
   if (dms == true) {
-    if (msg.author.username != "Splitbreed"){
+    if (msg.author.username != "Splitbreed" || msg.author.username != "Tai Lopez"){
       msg.channel.sendMessage("Command Ignored, DMS Tripped");
+      return;
     } else {
       if (dmj == true) {
         if (msg.author.username == "Jay") {
           msg.channel.sendMessage("Command Ignored, Jay DMS Tripped");
+          return;
         } else {
           if (msg.author.username == "Tai Lopez"){
             return;
