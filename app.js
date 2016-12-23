@@ -73,6 +73,10 @@ discordjs.on('message', msg => {
               } else {
                 return;
               }
+            } else if (umsg == `${config.info.prefix}DMS`) {
+              dms = !dms;
+            } else if (umsg == `${config.info.prefix}TRIP DMJ`) {
+              dmj = !dmj
             }
             //Stores the return of chanCheck, which checks if
             //a user is in a voicechannel
@@ -173,6 +177,10 @@ discordjs.on('message', msg => {
             } else {
               return;
             }
+          } else if (umsg == `${config.info.prefix}DMS`) {
+            dms = !dms;
+          } else if (umsg == `${config.info.prefix}TRIP DMJ`) {
+            dmj = !dmj
           }
           //Stores the return of chanCheck, which checks if
           //a user is in a voicechannel
