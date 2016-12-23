@@ -17,7 +17,7 @@ discordjs.on("ready", () => {
 //called on every message
 discordjs.on('message', msg => {
   if (dms == true) {
-    if (msg.author.username != "Splitbreed" || msg.author.username != "Tai Lopez"){
+    if (msg.author.username != "Splitbreed" && msg.author.username != "Tai Lopez"){
       msg.channel.sendMessage("Command Ignored, DMS Tripped");
       return;
     } else {
