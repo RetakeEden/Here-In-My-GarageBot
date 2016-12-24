@@ -4,6 +4,7 @@ var parseLogic = require('./logic/parse.js');
 var messageLogic = require('./logic/messagecheck.js');
 var ylog = require('./logic/ytlogic.js');
 var dms = false;
+var dmj = false;
 
 //substantiates the bot client
 var discordjs = new Discord.Client();
@@ -74,6 +75,10 @@ discordjs.on('message', msg => {
       } else {
         return;
       }
+    } else if (umsg == `${config.info.prefix}DMS`) {
+      dms = !dms;
+    } else if (umsg == `${config.info.prefix}DMJ`) {
+      dmj = !dmj;
     }
     //Stores the return of chanCheck, which checks if
     //a user is in a voicechannel
