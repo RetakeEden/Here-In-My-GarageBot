@@ -133,4 +133,4 @@ discordjs.on('message', msg => {
 });
 
 //Login info for the bot, stored in config.json
-discordjs.login(config.info.email, config.info.password);
+discordjs.login(config.info.authtok);
