@@ -96,8 +96,8 @@ function yskip(msg){
   // search.shift();
   // searchname.shift();
   jskiped = true;
-  if (search.length !=0){
-    msg.channel.sendMessage(`Now Playing: ${searchname[0]}`);
+  if (search.length > 1){
+    msg.channel.sendMessage(`Now Playing: ${searchname[1]}`);
     playNext(msg, curconn);
   } else {
     curconn.disconnect();
@@ -124,23 +124,12 @@ function clearq(msg){
 }
 
 function playNext(msg, conn){
-  console.log(search, "line 100ish")
-  console.log(searchname, "line 101ish");
-  if (jskiped = false) {
-    search.splice(0,1);
-    searchname.splice(0,1);
-    ytpb(msg);
-  } else {
-    search.splice(0,1);
-    searchname.splice(0,1);
+  if (jskiped = true) {
     jskiped = false;
-    if (search.length == 0) {
-      conn.disconnect();
-      msg.channel.sendMessage("Queue empty. Disconnecting!");
-    } else {
-      ytpb(msg)
-    }
   }
+  search.splice(0,1);
+  searchname.splice(0,1);
+  ytpb(msg)
 }
 
 module.exports = {
