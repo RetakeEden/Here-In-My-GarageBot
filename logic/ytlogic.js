@@ -5,8 +5,7 @@ var config = require('../config.json'),
     search = [],
     searchname = [],
     curconn = '',
-    disp = null,
-    jskiped = false;
+    disp = null;
 
 function base(passed, msg){
   if (passed[0] == "\'"){
@@ -92,23 +91,12 @@ function ytpb(msg){
 }
 
 function yskip(msg){
-  msg.channel.sendMessage(`Skipping: ${searchname[0]}`);
-  // search.shift();
-  // searchname.shift();
-  jskiped = true;
-  if (search.length !=0){
-    msg.channel.sendMessage(`Now Playing: ${searchname[0]}`);
-    playNext(msg, curconn);
+  if(curconn){
+    msg.channel.sendMessage(`Skipping: ${searchname[0]}`);
+    curconn.end();
   } else {
-    curconn.disconnect();
-    msg.channel.sendMessage("Queue empty. Disconnecting!")
+    msg.channel.sendMessage("There's nothing to skip!");
   }
-  // if (disp == null) {
-  //   msg.channel.sendMessage("Nothing to skip!");
-  // } else {
-  //   msg.channel.sendMessage(`Skipping: ${searchname[0]}`);
-  //   ytpb(msg);
-  // }
 }
 
 function clearq(msg){
@@ -127,19 +115,13 @@ function playNext(msg, conn){
   console.log(search, "line 100ish")
   console.log(searchname, "line 101ish");
   if (searchname.length > 1){
-    if (jskiped = true) {
-      jskiped = false;
-      search.splice(0,1);
-      searchname.splice(0,1);
-      ytpb(msg);
-    } else {
-      search.splice(0,1);
-      searchname.splice(0,1);
-      ytpb(msg)
-    }
+    search.splice(0,1);
+    searchname.splice(0,1);
+    ytpb(msg)
   } else {
     if (curconn) {
       curconn.disconnect();
+      msg.channel.sendMessage("Queue empty. Disconnecting!")
     }
   }
 }
