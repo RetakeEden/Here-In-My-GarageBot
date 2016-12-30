@@ -93,7 +93,7 @@ function ytpb(msg){
 function yskip(msg){
   if(curconn){
     msg.channel.sendMessage(`Skipping: ${searchname[0]}`);
-    curconn.end();
+    disp.end();
   } else {
     msg.channel.sendMessage("There's nothing to skip!");
   }
