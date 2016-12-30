@@ -126,16 +126,21 @@ function clearq(msg){
 function playNext(msg, conn){
   console.log(search, "line 100ish")
   console.log(searchname, "line 101ish");
-  if (jskiped = true) {
-    jskiped = false;
-    search.splice(0,1);
-    searchname.splice(0,1);
-    ytpb(msg);
+  if (searchname.length > 1){
+    if (jskiped = true) {
+      jskiped = false;
+      search.splice(0,1);
+      searchname.splice(0,1);
+      ytpb(msg);
+    } else {
+      search.splice(0,1);
+      searchname.splice(0,1);
+      ytpb(msg)
+    }
   } else {
-    search.splice(0,1);
-    searchname.splice(0,1);
-    jskiped = false;
-    ytpb(msg)
+    if (curconn) {
+      curconn.disconnect();
+    }
   }
 }
 
