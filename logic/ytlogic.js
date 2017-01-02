@@ -10,6 +10,8 @@ var config = require('../config.json'),
 function base(passed, msg){
   if (passed[0] == "\'"){
     return;
+  } else if (!passed[0]){
+    msg.channel.sendMessage("No arguments passed.");
   } else {
     passed = passed.toLowerCase();
     var final = passed.replace(/\"/g, "").split(' ').join(',');
@@ -121,6 +123,8 @@ function playNext(msg, conn){
   } else {
     if (curconn) {
       curconn.disconnect();
+      curconn = null;
+      disp = null;
       msg.channel.sendMessage("Queue empty. Disconnecting!")
     }
   }
