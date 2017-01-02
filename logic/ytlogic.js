@@ -10,6 +10,7 @@ var config = require('../config.json'),
 function base(passed, msg){
   if (!passed){
     msg.channel.sendMessage("No arguments passed")
+    return;
   }
   if (passed[0] == "\'"){
     return;
