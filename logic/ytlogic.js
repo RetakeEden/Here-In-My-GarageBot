@@ -8,10 +8,11 @@ var config = require('../config.json'),
     disp = null;
 
 function base(passed, msg){
+  if (!passed[0]){
+    msg.channel.sendMessage("No arguments passed")
+  }
   if (passed[0] == "\'"){
     return;
-  } else if (!passed[0]){
-    msg.channel.sendMessage("No arguments passed.");
   } else {
     passed = passed.toLowerCase();
     var final = passed.replace(/\"/g, "").split(' ').join(',');
@@ -122,6 +123,8 @@ function playNext(msg, conn){
     ytpb(msg)
   } else {
     if (curconn) {
+      search.splice(0,1);
+      searchname.splice(0,1);
       curconn.disconnect();
       curconn = null;
       disp = null;
