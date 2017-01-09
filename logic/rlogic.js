@@ -3,16 +3,20 @@ var config = require('../config.json'),
     parse = require('./parse.js');
 
 var random = {
-  "jsonrpc": "2.0",
-  "method": "generateIntegers",
+  "url": "",
+  "method": "GET",
   "params": {
-      "apiKey": `${config.info.rapi}`,
-      "n": 1,
-      "min": 1,
-      "max": 100,
-      "replacement": true
-  },
-  "id": 1
+    "jsonrpc": "2.0",
+    "method": "generateIntegers",
+    "params": {
+        "apiKey": `${config.info.rapi}`,
+        "n": 1,
+        "min": 1,
+        "max": 100,
+        "replacement": true
+    },
+    "id": 1
+  }
 }
 
 function rng(msg){
