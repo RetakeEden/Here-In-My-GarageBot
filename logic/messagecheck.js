@@ -49,7 +49,7 @@ function toCall(method, msg){
   } else if (method == `${config.info.prefix}PLOGIN`){
     plog.plogin(msg);
   } else if (method == `${config.info.prefix}RNG`){
-    rlog.random(msg);
+    rlog.rng(msg);
   } else {
     console.log("bad msg tried ", method)
     console.log('Bad message');

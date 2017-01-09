@@ -15,7 +15,7 @@ var random = {
   "id": 1
 }
 
-function random(msg){
+function rng(msg){
   request(random, function(err,res,body){
     if (err) {console.log(err)};
     console.log(res);
@@ -26,5 +26,5 @@ function random(msg){
 
 
 module.exports = {
-  random: random,
+  rng: rng,
 }
