@@ -4,8 +4,8 @@ var config = require('../config.json'),
 
 var random = {
   "url": "https://api.random.org/json-rpc/1/invoke",
-  "method": "GET",
-  "params": {
+  "method": "POST",
+  "form": {
     "jsonrpc": "2.0",
     "method": "generateIntegers",
     "params": {
