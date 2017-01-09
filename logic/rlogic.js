@@ -24,7 +24,8 @@ var random = {
 function rng(msg){
   request(random, function(err,res,body){
     if (err) {console.log(err)};
-    console.log(body);
+    body = JSON.parse(body);
+    msg.channel.sendMessage(`RNGesus has decreed: ${body.result.random.data[0]}`);
   })
 }
 
