@@ -5,7 +5,7 @@ var config = require('../config.json'),
 var random = {
   "url": "https://api.random.org/json-rpc/1/invoke",
   "method": "POST",
-  "form": {
+  form: {
     "jsonrpc": "2.0",
     "method": "generateIntegers",
     "params": {
@@ -22,8 +22,6 @@ var random = {
 function rng(msg){
   request(random, function(err,res,body){
     if (err) {console.log(err)};
-    console.log(res);
-    console.log("++++++++++++++")
     console.log(body);
   })
 }
