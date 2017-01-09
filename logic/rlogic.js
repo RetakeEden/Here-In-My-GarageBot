@@ -18,7 +18,7 @@ var data = {
 var random = {
   "url": "https://api.random.org/json-rpc/1/invoke",
   "method": "POST",
-  form: JSON.stringify(data);
+  form: JSON.stringify(data)
 }
 
 function rng(msg){
