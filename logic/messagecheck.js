@@ -2,14 +2,19 @@ var config = require('../config.json');
 var gcheck = '';
 var glog = require('./glogic.js');
 var ylog = require('./ytlogic.js');
+var plog = require('./palogic.js');
 
 //the keys to match the parsed message against
 var keys = {
-  knowledge: `${config.info.prefix}KNOWLEDGE`, knawledge: `${config.info.prefix}KNAWLEDGE`, fullthing: `${config.info.prefix}FULLTHING`, drears: `${config.prefix}DREARS`,
+  knowledge: `${config.info.prefix}KNOWLEDGE`,
+  knawledge: `${config.info.prefix}KNAWLEDGE`,
+  fullthing: `${config.info.prefix}FULLTHING`,
+  drears: `${config.prefix}DREARS`,
   giphy: `${config.info.prefix}GIPHY`,
   yt: `${config.info.prefix}YT`,
   queue: `${config.info.prefix}QUEUE`,
   yskip: `${config.info.prefix}YSKIP`,
+  plogin: `${config.info.prefix}PLOGIN`,
 };
 
 var key = Object.keys(keys);
@@ -39,6 +44,8 @@ function toCall(method, msg){
     ylog.queue(msg)
   } else if (method == `${config.info.prefix}YSKIP`){
     ylog.yskip(msg);
+  } else if (method == `${config.info.prefix}PLOGIN`){
+    plog.login(msg);
   } else {
     console.log("bad msg tried ", method)
     console.log('Bad message');
@@ -152,7 +159,7 @@ function returnMethod(n){
   //Rejoin the array into a string
   x = x.join('');
   //checks in keys if a message matches a key value
-  for (var i = 0; i <= 9; i++) {
+  for (var i = 0; i <= (keys.length+1); i++) {
     if (x == key[i]){
       //Checks if the prefix fits that put into config.json
       if (y != config.info.prefix){
