@@ -16,9 +16,10 @@ discordjs.on("ready", () => {
 
 //called on every message
 discordjs.on('message', msg => {
-  if (msg.author.username == "Jay"){
-    msg.react(":poop:");
-  }
+  // if (msg.author.username == "Jay"){
+  //   console.log("pls i beg")
+  //   msg.react("💩");
+  // }
   if (dms == true) {
     if (msg.author.username != "Splitbreed"){
       msg.channel.sendMessage("Command Ignored, DMS Tripped");
@@ -38,17 +39,20 @@ discordjs.on('message', msg => {
     //methods
     var umsg = parseLogic.parseCheck(msg)
     //Explains all the available commands and their usage.
+    if (umsg == "NICE" || umsg == "NICE.") {
+      msg.channel.sendMessage("");
+    }
     if (umsg == "TAI HELP"){
       msg.channel.sendMessage("Welcome! Most commands must be prefixed with the correct symbol! The current prefix is: \""+config.info.prefix + "\" All commands are case insensitive.");
       msg.channel.sendMessage("My available commands are:");
       msg.channel.sendMessage(config.info.prefix + "knowledge - Plays the original sound bite of the original video!");
       msg.channel.sendMessage(config.info.prefix + "knawledge - Plays the beginning sound bite of the video I'm based on!");
       msg.channel.sendMessage(config.info.prefix + "fullthing - Plays the whole video I'm based on!");
-      msg.channel.sendMessage(config.info.prefix + "giphy \"Search Terms Here\" - Uses the Giphy API to run a translate on the search terms provided and respond with a gif to fit it!")
-      msg.channel.sendMessage(config.info.prefix + "yt \"Search Terms Here\" - Searches youtube for a video with the specfied terms. If you're in a voice channel, I'll play it for you! If you're not, I'll just post it in chat instead :)")
+      msg.channel.sendMessage(config.info.prefix + "giphy \"Search Terms Here\" - Uses the Giphy API to run a translate on the search terms provided and respond with a gif to fit it!");
+      msg.channel.sendMessage(config.info.prefix + "yt \"Search Terms Here\" - Searches youtube for a video with the specfied terms. If you're in a voice channel, I'll play it for you!");
+      msg.channel.sendMessage(config.info.prefix + "yskip - Skips to the next video in the queue. If no videos are in queue, leaves the channel.");
       // msg.channel.sendMessage(config.info.prefix + "drears  (Currently Broken! :c )");
       msg.channel.sendMessage("There are two commands that do not require a prefix. They are as follows: ")
-      msg.channel.sendMessage("Hi Tai! - Just to say hi. I love it!");
       msg.channel.sendMessage("Tai Pls Go - I leave your channel! For when I'm getting annoying.");
       msg.channel.sendMessage("I will clean up any commands that are properly executed (barring a few that make sense to keep) to make sure your channel is spam free, but if you mistype it, I won't know what you mean and it'll stay there forever! (Or until you or an admin delete it)");
     } else if (umsg == "HI TAI" || umsg == "HI TAI!") {
