@@ -3,7 +3,7 @@ var config = require('../config.json'),
     parse = require('./parse.js'),
     curconn = '',
     disp = null,
-    pan = required('anesidora');
+    pan = require('anesidora');
 
 var pandora = new pan(`${config.info.panlog}`, `${config.info.panpass}`);
 
