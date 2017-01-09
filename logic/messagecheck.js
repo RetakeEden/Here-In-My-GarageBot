@@ -45,7 +45,7 @@ function toCall(method, msg){
   } else if (method == `${config.info.prefix}YSKIP`){
     ylog.yskip(msg);
   } else if (method == `${config.info.prefix}PLOGIN`){
-    plog.login(msg);
+    plog.plogin(msg);
   } else {
     console.log("bad msg tried ", method)
     console.log('Bad message');
