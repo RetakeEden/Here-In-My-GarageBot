@@ -3,7 +3,7 @@ var config = require('../config.json'),
     parse = require('./parse.js');
 
 var random = {
-  "url": "",
+  "url": "https://api.random.org/json-rpc/1/invoke",
   "method": "GET",
   "params": {
     "jsonrpc": "2.0",
