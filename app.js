@@ -16,10 +16,6 @@ discordjs.on("ready", () => {
 
 //called on every message
 discordjs.on('message', msg => {
-  // if (msg.author.username == "Jay"){
-  //   console.log("pls i beg")
-  //   msg.react("💩");
-  // }
   if (dms == true) {
     if (msg.author.username != "Splitbreed"){
       msg.channel.sendMessage("Command Ignored, DMS Tripped");

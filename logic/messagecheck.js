@@ -3,6 +3,7 @@ var gcheck = '';
 var glog = require('./glogic.js');
 var ylog = require('./ytlogic.js');
 var plog = require('./palogic.js');
+var rlog = require('./rlogic.js');
 
 //the keys to match the parsed message against
 var keys = {
@@ -15,6 +16,7 @@ var keys = {
   queue: `${config.info.prefix}QUEUE`,
   yskip: `${config.info.prefix}YSKIP`,
   plogin: `${config.info.prefix}PLOGIN`,
+  rng: `${config.info.prefix}RNG`
 };
 
 var key = Object.keys(keys);
@@ -46,6 +48,8 @@ function toCall(method, msg){
     ylog.yskip(msg);
   } else if (method == `${config.info.prefix}PLOGIN`){
     plog.plogin(msg);
+  } else if (method == `${config.info.prefix}RNG`){
+    rlog.random(msg);
   } else {
     console.log("bad msg tried ", method)
     console.log('Bad message');
