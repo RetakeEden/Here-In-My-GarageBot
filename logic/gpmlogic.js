@@ -55,7 +55,7 @@ function playCurr(msg) {
         }
         disp = connection.playStream(request({
           uri: `streamUrl`,
-          followAllRedirects = true;
+          followAllRedirects = true
         }));
         disp.on('end', () => {
           disp = null;
