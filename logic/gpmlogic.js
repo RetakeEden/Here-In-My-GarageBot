@@ -38,9 +38,14 @@ function playCurr(msg) {
   const streamOptions = { seek: 0, volume: 1 };
   var cursong = alls.pop();
   var stream;
+  var streamactual;
   pm.getStreamUrl(cursong.id, function(err, streamUrl){
     stream = streamUrl;
   });
+  request(stream, function(err, res, body){
+    console.log(body);
+    // streamactual = body;
+  })
   if(msg.member.voiceChannel){
     msg.member.voiceChannel.join()
     .then(function(connection){
@@ -48,7 +53,7 @@ function playCurr(msg) {
       if (disp == null){
         msg.channel.sendMessage(`Currently Playing: \"${cursong.title}\" by \"${cursong.artist}\"`);
       }
-      disp = connection.playStream(stream, streamOptions);
+      disp = connection.playStream(streamactual, streamOptions);
 
       disp.on('end', () => {
         disp = null;
@@ -65,6 +70,12 @@ function playCurr(msg) {
   }
 }
 
+function clearq(msg){
+  curconn = '';
+  disp = null;
+  getAll(msg);
+  msg.channel.sendMessage("Clearing Queue");
+}
 
 module.exports = {
   getAll: getAll,
