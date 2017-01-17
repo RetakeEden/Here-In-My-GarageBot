@@ -99,7 +99,7 @@ function shuffle(msg){
   while (0 !== currentIndex) {
     randomIndex = Math.floor(Math.random() * currentIndex);
     currentIndex -= 1;
-    temporaryValue = array[currentIndex];
+    temporaryValue = alls[currentIndex];
     alls[currentIndex] = alls[randomIndex];
     alls[randomIndex] = temporaryValue;
   }
