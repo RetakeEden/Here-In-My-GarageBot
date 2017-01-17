@@ -50,7 +50,6 @@ function playCurr(msg) {
         console.log(res);
       })
       resolve(res);
-      )
     })
   })
   .then(function(res){
