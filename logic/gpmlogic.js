@@ -38,6 +38,7 @@ function playCurr(msg) {
   const streamOptions = { seek: 0, volume: 1 };
   var cursong = alls.pop();
   var stream;
+  const fs = require('fs');
   new Promise(function(resolve, reject){
     pm.getStreamUrl(cursong.id, function(err, streamUrl){
       console.log(streamUrl);
@@ -45,13 +46,6 @@ function playCurr(msg) {
     });
   })
   .then(function(streamUrl){
-    return new Promise(function(resolve, reject){
-      request.get(streamUrl, function(err, res, body){
-        resolve(body);
-      })
-    })
-  })
-  .then(function(body){
     if(msg.member.voiceChannel){
       msg.member.voiceChannel.join()
       .then(function(connection){
@@ -59,7 +53,7 @@ function playCurr(msg) {
         if (disp == null){
           msg.channel.sendMessage(`Currently Playing: \"${cursong.title}\" by \"${cursong.artist}\"`);
         }
-        disp = connection.playStream(body, streamOptions);
+        disp = request.get(streamUrl).pipe(connection.playStream());
 
         disp.on('end', () => {
           disp = null;
