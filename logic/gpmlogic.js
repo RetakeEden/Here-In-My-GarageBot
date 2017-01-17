@@ -25,13 +25,16 @@ pm.init({email: `ayoungbl0d@gmail.com`, password: `Fireheart214!`}, function(err
 
 function getAll(msg) {
   pm.getAllTracks(function(err, library) {
-        var alls = library.data.items;
-        var firsong = alls.pop();
-        console.log(firsong);
-        pm.getStreamUrl(firsong.id, function(err, streamUrl) {
-            console.log(streamUrl);
-            msg.channel.sendMessage(streamUrl);
-        });
+    if(err) {
+      console.log(err);
+    }
+      var alls = library.data.items;
+      var firsong = alls.pop();
+      console.log(firsong);
+      pm.getStreamUrl(firsong.id, function(err, streamUrl) {
+        console.log(streamUrl);
+        msg.channel.sendMessage(streamUrl);
+      });
     });
 }
 
