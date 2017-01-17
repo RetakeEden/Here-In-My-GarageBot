@@ -19,6 +19,9 @@ var keys = {
   plogin: `${config.info.prefix}PLOGIN`,
   rng: `${config.info.prefix}RNG`,
   play: `${config.info.prefix}PLAY`,
+  shuffle: `${config.info.prefix}SHUFFLE`,
+  gskip: `${config.info.prefix}GSKIP`,
+  gnew: `${config.info.prefix}GNEW`,
 };
 
 var key = Object.keys(keys);
@@ -53,7 +56,13 @@ function toCall(method, msg){
   } else if (method == `${config.info.prefix}RNG`){
     rlog.rng(msg);
   } else if (method == `${config.info.prefix}PLAY`){
-    gplog.getAll(msg);
+    gplog.playCurr(msg);
+  } else if (method == `${config.info.prefix}SHUFFLE`){
+    gplog.shuffle(msg);
+  } else if (method == `${config.info.prefix}GSKIP`){
+    gplog.gskip(msg);
+  } else if (method == `${config.info.prefix}GNEW`){
+    gplog.newList(msg);
   } else {
     console.log("bad msg tried ", method)
     console.log('Bad message');
@@ -167,7 +176,7 @@ function returnMethod(n){
   //Rejoin the array into a string
   x = x.join('');
   //checks in keys if a message matches a key value
-  for (var i = 0; i <= 15; i++) {
+  for (var i = 0; i <= 20; i++) {
     if (x == key[i]){
       //Checks if the prefix fits that put into config.json
       if (y != config.info.prefix){
