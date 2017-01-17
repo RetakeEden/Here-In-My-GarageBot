@@ -36,14 +36,10 @@ function getAll(msg) {
 function playCurr(msg) {
   const streamOptions = { seek: 0, volume: 1 };
   var cursong = alls.pop();
-  var streamsurl;
-  pm.getStreamUrl(cursong.id, function(err, streamUrl){
-    streamsurl = streamUrl;
-  });
   var stream;
-  request(streamsurl, function(err, res, body){
-    console.log(body);
-  })
+  pm.getStreamUrl(cursong.id, function(err, streamUrl){
+    stream = streamUrl;
+  });
   if(msg.memeber.voiceChannel){
     msg.memeber.voiceChannel.join()
     .then(function(connection){
