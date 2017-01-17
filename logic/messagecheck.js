@@ -18,7 +18,7 @@ var keys = {
   yskip: `${config.info.prefix}YSKIP`,
   plogin: `${config.info.prefix}PLOGIN`,
   rng: `${config.info.prefix}RNG`,
-  tracks: `${config.info.prefix}tracks`,
+  tracks: `${config.info.prefix}TRACKS`,
 };
 
 var key = Object.keys(keys);
@@ -173,7 +173,7 @@ function returnMethod(n){
       if (y != config.info.prefix){
         return "Bad Prefix"
       } else {
-        console.log(keys[x], 'line 144 msgcheck');
+        console.log(keys[x], 'line 176 msgcheck');
         return keys[x];
       }
     }
