@@ -8,11 +8,20 @@ var config = require('../config.json'),
 
 var pm = new playm();
 
-pm.init({email: `${config.info.gpemail}`, password: `${config.info.gppass}`}, function(err){
+// pm.init({email: `${config.info.gpemail}`, password: `${config.info.gppass}`}, function(err){
+//   if(err) {
+//     console.log(err)
+//   };
+// });
+
+pm.login({email: `${config.info.gpemail}`, password: `${config.info.gppass}`}, function(err, res){
   if(err) {
     console.log(err)
   };
+  console.log(res);
 });
+
+
 
 function getAll(msg) {
   pm.getAllTracks(function(err, library) {
