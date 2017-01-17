@@ -18,7 +18,7 @@ var keys = {
   yskip: `${config.info.prefix}YSKIP`,
   plogin: `${config.info.prefix}PLOGIN`,
   rng: `${config.info.prefix}RNG`,
-  gptracks: `${config.info.prefix}tracks`,
+  tracks: `${config.info.prefix}tracks`,
 };
 
 var key = Object.keys(keys);
