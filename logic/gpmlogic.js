@@ -75,7 +75,7 @@ function playCurr(msg) {
 function clearq(msg){
   curconn = '';
   disp = null;
-  getAll(msg);
+  // getAll(msg);
   msg.channel.sendMessage("Clearing Queue");
 }
 
