@@ -41,8 +41,8 @@ function playCurr(msg) {
   pm.getStreamUrl(cursong.id, function(err, streamUrl){
     stream = streamUrl;
   });
-  if(msg.memeber.voiceChannel){
-    msg.memeber.voiceChannel.join()
+  if(msg.member.voiceChannel){
+    msg.member.voiceChannel.join()
     .then(function(connection){
       curconn = connection;
       if (disp == null){
