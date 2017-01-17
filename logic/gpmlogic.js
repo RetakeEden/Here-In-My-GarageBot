@@ -47,12 +47,11 @@ function playCurr(msg) {
   .then(function(streamUrl){
     return new Promise(function(resolve, reject){
       request.get(streamUrl, function(err, res, body){
-        console.log(res);
+        resolve(body);
       })
-      resolve(res);
     })
   })
-  .then(function(res){
+  .then(function(body){
     if(msg.member.voiceChannel){
       msg.member.voiceChannel.join()
       .then(function(connection){
@@ -60,7 +59,7 @@ function playCurr(msg) {
         if (disp == null){
           msg.channel.sendMessage(`Currently Playing: \"${cursong.title}\" by \"${cursong.artist}\"`);
         }
-        disp = connection.playStream(res, streamOptions);
+        disp = connection.playStream(body, streamOptions);
 
         disp.on('end', () => {
           disp = null;
