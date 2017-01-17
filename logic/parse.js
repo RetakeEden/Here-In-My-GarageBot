@@ -22,5 +22,4 @@ module.exports = {
   parseCheck: parseCheck,
   chanCheck: chanCheck,
   jsonParse: jsonParse,
-  convertTime: convertTime
 }
