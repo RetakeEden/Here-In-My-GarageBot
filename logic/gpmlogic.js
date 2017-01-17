@@ -3,7 +3,8 @@ var config = require('../config.json'),
     parse = require('./parse.js'),
     curconn = '',
     playm = require('playmusic'),
-    disp = null;
+    disp = null,
+    alls = null;
 
 
 var pm = new playm();
@@ -28,14 +29,40 @@ function getAll(msg) {
     if(err) {
       console.log(err);
     }
-      var alls = library.data.items;
-      var firsong = alls.pop();
-      console.log(firsong);
-      pm.getStreamUrl(firsong.id, function(err, streamUrl) {
-        console.log(streamUrl);
-        msg.channel.sendMessage(streamUrl);
-      });
+      alls = library.data.items;
     });
+}
+
+function playCurr(msg) {
+  const streamOptions = { seek: 0, volume: 1 };
+  var cursong = alls.pop();
+  var streamsurl;
+  pm.getStreamUrl(cursong.id, function(err, streamUrl){
+    streamsurl = streamUrl;
+  });
+  var stream = request(streamsurl);
+  if(msg.memeber.voiceChannel){
+    msg.memeber.voiceChannel.join()
+    .then(function(connection){
+      curconn = connection;
+      if (disp == null){
+        msg.channel.sendMessage(`Currently Playing: \"${cursong.title}\" by \"${cursong.artist}\"`);
+      }
+      disp = connection.playStream(stream, streamOptions);
+
+      disp.on('end', () => {
+        disp = null;
+        console.log("success");
+      })
+
+      disp.on('error', (err) => {
+        console.log(err)
+        msg.channel.sendMessage("There was an error!");
+      })
+    })
+  } else {
+    msg.channel.sendMessage("You're not in a voice channel!");
+  }
 }
 
 

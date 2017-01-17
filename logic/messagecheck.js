@@ -18,7 +18,7 @@ var keys = {
   yskip: `${config.info.prefix}YSKIP`,
   plogin: `${config.info.prefix}PLOGIN`,
   rng: `${config.info.prefix}RNG`,
-  tracks: `${config.info.prefix}TRACKS`,
+  play: `${config.info.prefix}PLAY`,
 };
 
 var key = Object.keys(keys);
@@ -52,7 +52,7 @@ function toCall(method, msg){
     plog.plogin(msg);
   } else if (method == `${config.info.prefix}RNG`){
     rlog.rng(msg);
-  } else if (method == `${config.info.prefix}TRACKS`){
+  } else if (method == `${config.info.prefix}PLAY`){
     gplog.getAll(msg);
   } else {
     console.log("bad msg tried ", method)
