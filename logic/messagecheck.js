@@ -167,7 +167,7 @@ function returnMethod(n){
   //Rejoin the array into a string
   x = x.join('');
   //checks in keys if a message matches a key value
-  for (var i = 0; i <= 11; i++) {
+  for (var i = 0; i <= 15; i++) {
     if (x == key[i]){
       //Checks if the prefix fits that put into config.json
       if (y != config.info.prefix){
