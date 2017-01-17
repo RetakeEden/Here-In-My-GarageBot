@@ -30,7 +30,7 @@ function getAll(msg) {
       console.log(err);
     }
       alls = library.data.items;
-      playcurr(msg);
+      playCurr(msg);
     });
 }
 
