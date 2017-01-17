@@ -40,7 +40,10 @@ function playCurr(msg) {
   pm.getStreamUrl(cursong.id, function(err, streamUrl){
     streamsurl = streamUrl;
   });
-  var stream = request(streamsurl);
+  var stream;
+  request(streamsurl, function(err, res, body){
+    console.log(body);
+  })
   if(msg.memeber.voiceChannel){
     msg.memeber.voiceChannel.join()
     .then(function(connection){
