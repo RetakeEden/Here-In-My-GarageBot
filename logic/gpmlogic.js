@@ -54,7 +54,7 @@ function playCurr(msg) {
           msg.channel.sendMessage(`Currently Playing: \"${cursong.title}\" by \"${cursong.artist}\"`);
         }
         disp = connection.playStream(request({
-          uri: `streamUrl`,
+          uri: streamUrl,
           followAllRedirects: true
         }));
         disp.on('end', () => {
