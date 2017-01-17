@@ -120,4 +120,5 @@ module.exports = {
   gskip: gskip,
   shuffle: shuffle,
   newList: newList,
+  playCurr: playCurr,
 }
