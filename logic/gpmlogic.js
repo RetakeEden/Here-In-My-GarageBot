@@ -81,4 +81,5 @@ function clearq(msg){
 
 module.exports = {
   getAll: getAll,
+  clearq: clearq,
 }
