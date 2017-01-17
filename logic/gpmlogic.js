@@ -22,13 +22,13 @@ pm.init({email: `ayoungbl0d@gmail.com`, password: `Fireheart214!`}, function(err
 //   console.log(res);
 // });
 
-pm.getAllTracks(function(err, library) {
-  if(err) {
-    console.log(err);
-  }
-    alls = library.data.items;
-    shuffle();
-});
+// pm.getAllTracks(function(err, library) {
+//   if(err) {
+//     console.log(err);
+//   }
+//     alls = library.data.items;
+//     shuffle();
+// });
 
 function newList(msg){
   pm.getAllTracks(function(err, library) {
