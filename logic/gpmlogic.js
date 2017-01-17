@@ -46,12 +46,11 @@ function playCurr(msg) {
   })
   .then(function(streamUrl){
     return new Promise(function(resolve, reject){
-      request(streamUrl, function(err, res, body){
-        resolve(body);
-      })
+      var stream = ytdl(`streamUrl`, {filter: "audioonly"});
+      resolve(stream);
     })
   })
-  .then(function(body){
+  .then(function(stream){
     if(msg.member.voiceChannel){
       msg.member.voiceChannel.join()
       .then(function(connection){
@@ -59,7 +58,7 @@ function playCurr(msg) {
         if (disp == null){
           msg.channel.sendMessage(`Currently Playing: \"${cursong.title}\" by \"${cursong.artist}\"`);
         }
-        disp = connection.playStream(body, streamOptions);
+        disp = connection.playStream(stream, streamOptions);
 
         disp.on('end', () => {
           disp = null;
