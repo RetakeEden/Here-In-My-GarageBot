@@ -1,6 +1,5 @@
 var config = require('../config.json'),
-    ytdl = require('ytdl-core'),
-    equest = require('request'),
+    request = require('request'),
     parse = require('./parse.js'),
     curconn = '',
     playm = require('playmusic'),
@@ -39,19 +38,22 @@ function playCurr(msg) {
   const streamOptions = { seek: 0, volume: 1 };
   var cursong = alls.pop();
   var stream;
-  var streamactual;
   new Promise(function(resolve, reject){
     pm.getStreamUrl(cursong.id, function(err, streamUrl){
+      console.log(streamUrl);
       resolve(streamUrl);
     });
   })
   .then(function(streamUrl){
     return new Promise(function(resolve, reject){
-      var stream = ytdl(`streamUrl`, {filter: "audioonly"});
-      resolve(stream);
+      request.get(streamUrl, function(err, res, body){
+        console.log(res);
+      })
+      resolve(res);
+      )
     })
   })
-  .then(function(stream){
+  .then(function(res){
     if(msg.member.voiceChannel){
       msg.member.voiceChannel.join()
       .then(function(connection){
@@ -59,7 +61,7 @@ function playCurr(msg) {
         if (disp == null){
           msg.channel.sendMessage(`Currently Playing: \"${cursong.title}\" by \"${cursong.artist}\"`);
         }
-        disp = connection.playStream(stream, streamOptions);
+        disp = connection.playStream(res, streamOptions);
 
         disp.on('end', () => {
           disp = null;
