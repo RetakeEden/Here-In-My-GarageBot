@@ -45,8 +45,10 @@ function playCurr(msg) {
     });
   })
   .then(function(streamUrl){
-    request(streamUrl, function(err, res, body){
-      resolve(body);
+    return new Promise(function(resolve, reject){
+      request(streamUrl, function(err, res, body){
+        resolve(body);
+      })
     })
   })
   .then(function(body){
