@@ -1,5 +1,6 @@
 var config = require('../config.json'),
-    request = require('request'),
+    ytdl = require('ytdl-core'),
+    equest = require('request'),
     parse = require('./parse.js'),
     curconn = '',
     playm = require('playmusic'),
