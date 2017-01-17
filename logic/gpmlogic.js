@@ -28,5 +28,5 @@ function getAll(msg) {
 
 
 module.exports = {
-  getAll = getAll,
+  getAll: getAll,
 }
