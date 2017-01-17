@@ -52,31 +52,30 @@ function playCurr(msg) {
     })
   })
   .then(function(body){
-    console.log(body);
+    if(msg.member.voiceChannel){
+      msg.member.voiceChannel.join()
+      .then(function(connection){
+        curconn = connection;
+        if (disp == null){
+          msg.channel.sendMessage(`Currently Playing: \"${cursong.title}\" by \"${cursong.artist}\"`);
+        }
+        disp = connection.playStream(body, streamOptions);
+
+        disp.on('end', () => {
+          disp = null;
+          console.log("success");
+        })
+
+        disp.on('error', (err) => {
+          console.log(err)
+          msg.channel.sendMessage("There was an error!");
+        })
+      })
+    } else {
+      msg.channel.sendMessage("You're not in a voice channel!");
+    }
   })
   .catch(console.log);
-  if(msg.member.voiceChannel){
-    msg.member.voiceChannel.join()
-    .then(function(connection){
-      curconn = connection;
-      if (disp == null){
-        msg.channel.sendMessage(`Currently Playing: \"${cursong.title}\" by \"${cursong.artist}\"`);
-      }
-      disp = connection.playStream(streamactual, streamOptions);
-
-      disp.on('end', () => {
-        disp = null;
-        console.log("success");
-      })
-
-      disp.on('error', (err) => {
-        console.log(err)
-        msg.channel.sendMessage("There was an error!");
-      })
-    })
-  } else {
-    msg.channel.sendMessage("You're not in a voice channel!");
-  }
 }
 
 function clearq(msg){
