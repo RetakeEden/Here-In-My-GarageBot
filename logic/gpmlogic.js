@@ -70,7 +70,7 @@ function playCurr(msg) {
 
           disp.on('end', () => {
             disp = null;
-            playNext(msg, connection);
+            playCurr(msg);
           })
 
           disp.on('error', (err) => {
