@@ -53,8 +53,10 @@ function playCurr(msg) {
         if (disp == null){
           msg.channel.sendMessage(`Currently Playing: \"${cursong.title}\" by \"${cursong.artist}\"`);
         }
-        disp = request.get(streamUrl).pipe(connection.playStream());
-
+        disp = connection.playStream(request({
+          uri: `streamUrl`,
+          followAllRedirects = true;
+        }));
         disp.on('end', () => {
           disp = null;
           console.log("success");
