@@ -39,13 +39,20 @@ function playCurr(msg) {
   var cursong = alls.pop();
   var stream;
   var streamactual;
-  pm.getStreamUrl(cursong.id, function(err, streamUrl){
-    stream = streamUrl;
-  });
-  request(stream, function(err, res, body){
-    console.log(body);
-    // streamactual = body;
+  new Promise(function(resolve, reject){
+    pm.getStreamUrl(cursong.id, function(err, streamUrl){
+      resolve(streamUrl);
+    });
   })
+  .then(function(streamUrl){
+    request(streamUrl, function(err, res, body){
+      resolve(body);
+    })
+  })
+  .then(function(body){
+    console.log(body);
+  })
+  .catch(console.log);
   if(msg.member.voiceChannel){
     msg.member.voiceChannel.join()
     .then(function(connection){
