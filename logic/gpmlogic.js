@@ -116,7 +116,6 @@ function gskip(msg){
 }
 
 module.exports = {
-  getAll: getAll,
   clearq: clearq,
   gskip: gskip,
   shuffle: shuffle,
