@@ -8,18 +8,18 @@ var config = require('../config.json'),
 
 var pm = new playm();
 
-// pm.init({email: `${config.info.gpemail}`, password: `${config.info.gppass}`}, function(err){
-//   if(err) {
-//     console.log(err)
-//   };
-// });
-
-pm.login({email: `${config.info.gpemail}`, password: `${config.info.gppass}`}, function(err, res){
+pm.init({email: `ayoungbl0d@gmail.com`, password: `Fireheart214!`}, function(err){
   if(err) {
     console.log(err)
   };
-  console.log(res);
 });
+
+// pm.login({email: `${config.info.gpemail}`, password: `${config.info.gppass}`}, function(err, res){
+//   if(err) {
+//     console.log(err)
+//   };
+//   console.log(res);
+// });
 
 
 
