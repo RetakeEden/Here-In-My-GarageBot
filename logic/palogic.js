@@ -14,7 +14,7 @@ var partinfo = {
 
 var loginfo = {
   "uri": `${base}`,
-  "method": "POST",
+  "method": "auth.userLogin",
   form: JSON.stringify(partinfo)
 }
 function plogin(msg){
