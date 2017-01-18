@@ -9,7 +9,7 @@ var config = require('../config.json'),
 
 var pm = new playm();
 
-pm.init({email: JSON.stringify(config.info.gpemail), password: JSON.stringify(config.info.gppassword)}, function(err){
+pm.init({email: config.info.gpemail, password: config.info.gppassword}, function(err){
   if(err) {
     console.log(err)
   };
