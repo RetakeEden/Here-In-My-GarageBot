@@ -3,6 +3,8 @@ var gcheck = '';
 var glog = require('./glogic.js');
 var ylog = require('./ytlogic.js');
 var plog = require('./palogic.js');
+var rlog = require('./rlogic.js');
+var gplog = require('./gpmlogic.js');
 
 //the keys to match the parsed message against
 var keys = {
@@ -15,6 +17,11 @@ var keys = {
   queue: `${config.info.prefix}QUEUE`,
   yskip: `${config.info.prefix}YSKIP`,
   plogin: `${config.info.prefix}PLOGIN`,
+  rng: `${config.info.prefix}RNG`,
+  play: `${config.info.prefix}PLAY`,
+  shuffle: `${config.info.prefix}SHUFFLE`,
+  gskip: `${config.info.prefix}GSKIP`,
+  gnew: `${config.info.prefix}GNEW`,
 };
 
 var key = Object.keys(keys);
@@ -46,6 +53,16 @@ function toCall(method, msg){
     ylog.yskip(msg);
   } else if (method == `${config.info.prefix}PLOGIN`){
     plog.plogin(msg);
+  } else if (method == `${config.info.prefix}RNG`){
+    rlog.rng(msg);
+  } else if (method == `${config.info.prefix}PLAY`){
+    gplog.playCurr(msg);
+  } else if (method == `${config.info.prefix}SHUFFLE`){
+    gplog.shuffle(msg);
+  } else if (method == `${config.info.prefix}GSKIP`){
+    gplog.gskip(msg);
+  } else if (method == `${config.info.prefix}GNEW`){
+    gplog.newList(msg);
   } else {
     console.log("bad msg tried ", method)
     console.log('Bad message');
@@ -159,13 +176,13 @@ function returnMethod(n){
   //Rejoin the array into a string
   x = x.join('');
   //checks in keys if a message matches a key value
-  for (var i = 0; i <= 11; i++) {
+  for (var i = 0; i <= 20; i++) {
     if (x == key[i]){
       //Checks if the prefix fits that put into config.json
       if (y != config.info.prefix){
         return "Bad Prefix"
       } else {
-        console.log(keys[x], 'line 144 msgcheck');
+        console.log(keys[x], 'line 176 msgcheck');
         return keys[x];
       }
     }

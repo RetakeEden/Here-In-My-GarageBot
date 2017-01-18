@@ -3,6 +3,7 @@ var config = require('./config.json');
 var parseLogic = require('./logic/parse.js');
 var messageLogic = require('./logic/messagecheck.js');
 var ylog = require('./logic/ytlogic.js');
+var gplog = require('./logic/gpmlogic.js');
 var dms = false;
 var dmj = false;
 
@@ -16,10 +17,6 @@ discordjs.on("ready", () => {
 
 //called on every message
 discordjs.on('message', msg => {
-  // if (msg.author.username == "Jay"){
-  //   console.log("pls i beg")
-  //   msg.react("💩");
-  // }
   if (dms == true) {
     if (msg.author.username != "Splitbreed"){
       msg.channel.sendMessage("Command Ignored, DMS Tripped");
@@ -61,6 +58,7 @@ discordjs.on('message', msg => {
     } else if (umsg == "TAI PLS GO"){
       //bot leaves the current voice channel
       ylog.clearq(msg);
+      gplog.clearq(msg);
       //if no voice channel, does nothing
       msg.member.voiceChannel.leave();
       //delets the command message (requires bot to be

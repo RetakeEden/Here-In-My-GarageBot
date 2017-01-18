@@ -3,17 +3,29 @@ var config = require('../config.json'),
     parse = require('./parse.js'),
     curconn = '',
     disp = null,
-    pan = require('anesidora');
+    base = "https://tuner.pandora.com/services/json/";
 
-var pandora = new pan(`${config.info.panlog}`, `${config.info.panpass}`);
 
+var partinfo = {
+  "username": "android",
+  "password": "AC7IBG09A3DTSYM4R41UJWL07VLN8JI7",
+  "deviceModel": "android-generic",
+}
+
+var loginfo = {
+  "method": "POST",
+  "url": base,
+  "qs": {
+    "method": "auth.partnerLogin"
+  },
+  "body": JSON.stringify(partinfo)
+}
 function plogin(msg){
-  pandora.login(function(err){
-    if(err) {console.log(err)};
-    pandora.request(function(err, stations){
-      if(err) {console.log(err)};
-      msg.channel.sendMessage("Current Pandora Stations: " + stations);
-    })
+  request(loginfo, function(err, res, body){
+    if (err) {
+      console.log(err);
+    }
+    console.log(JSON.parse(body));
   })
 }
 
