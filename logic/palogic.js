@@ -9,7 +9,8 @@ var config = require('../config.json'),
 var partinfo = {
   "username": "android",
   "password": "AC7IBG09A3DTSYM4R41UJWL07VLN8JI7",
-  "deviceId": "android-generic"
+  "deviceId": "android-generic",
+  "version": "5"
 }
 
 var loginfo = {
