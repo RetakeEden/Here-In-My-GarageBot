@@ -8,7 +8,9 @@ var config = require('../config.json'),
 
 
 var pm = new playm();
-
+console.log(config.info.gpemail, config.info.gppassword);
+console.log(typeof(config.info.gpemail));
+console.log(typeof(config.info.gppassword));
 pm.init({email: config.info.gpemail, password: config.info.gppassword}, function(err){
   if(err) {
     console.log(err)
