@@ -25,7 +25,7 @@ function plogin(msg){
     if (err) {
       console.log(err);
     }
-    console.log(body);
+    console.log(JSON.parse(body));
   })
 }
 
