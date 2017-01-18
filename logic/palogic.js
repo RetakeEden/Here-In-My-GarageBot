@@ -13,7 +13,7 @@ var partinfo = {
 }
 
 var loginfo = {
-  `uri: ${base}`,
+  "uri": `${base}`,
   "method": "POST",
   form: JSON.stringify(partinfo)
 }
