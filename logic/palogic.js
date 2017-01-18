@@ -3,7 +3,7 @@ var config = require('../config.json'),
     parse = require('./parse.js'),
     curconn = '',
     disp = null,
-    base = "https://tuner.pandora.com/services/json";
+    base = "http://tuner.pandora.com/services/json/";
 
 
 var partinfo = {
