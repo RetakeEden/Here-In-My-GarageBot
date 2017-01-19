@@ -86,8 +86,15 @@ function playCurr(msg) {
 }
 
 function clearq(msg){
-  curconn = null;
-  disp = null;
+  new Promise(function(resolve, reject){
+    curconn = null;
+    disp = null;
+    alls = null;
+    resolve(alls);
+  })
+  .then(function(alls){
+    newList(msg);
+  });
   // getAll(msg);
   msg.channel.sendMessage("Clearing Queue");
 }
@@ -110,7 +117,6 @@ function shuffle(msg){
 }
 
 function gskip(msg){
-  alls = null;
   disp.end();
   msg.channel.sendMessage("Skipping current song.");
 }
