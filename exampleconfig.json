@@ -1,7 +1,12 @@
 {
   "info": {
-    "email": "<bot email here>",
-    "password": "<bot password here>",
-    "prefix": "<prefix here> (Currently only supports single prefix ie. $, ^, !, Z)"
+    "authtok": "<bot auth token here> Changes to the framework now require the bot to login with an authtoken from the website, or via a bot account registered with discord.",
+    "prefix": "<prefix here> (Currently only supports single prefix ie. $, ^, !, Z)",
+    "apiKEY": "<Google API Key Here> For YouTube Functionality. Make sure your key has access to the YouTube API",
+    "panlog": "<Pandora login email> Not supported yet.",
+    "panpass": "<Pandora login password> Not supported yet.",
+    "rapi": "<RNG API Key Here> Beta keys can be acquired at api.random.org",
+    "gpemail": "<Google Play Email> For Google Play Music access",
+    "gppass": "<Google Play Password> See Above"
   }
 }
