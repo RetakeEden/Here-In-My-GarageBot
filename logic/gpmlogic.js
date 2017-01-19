@@ -69,11 +69,11 @@ function playCurr(msg) {
           msg.channel.sendMessage(`Currently Playing: \"${cursong.title}\" by \"${cursong.artist}\"`);
 
           if (alls.length > 2){
-            msg.channel.sendMessage(`Next Up: \"${alls[0].title}\", \"${alls[1].title}\", and \"${alls[2].title}\"`);
+            msg.channel.sendMessage(`Next Up: \"${alls[alls.length-1].title}\", \"${alls[alls.length-2].title}\", and \"${alls[alls.length-3].title}\"`);
           } else if (alls.length == 2){
-            msg.channel.sendMessage(`Next Up: \"${alls[0].title}\", and \"${alls[1].title}\"`);
+            msg.channel.sendMessage(`Next Up: \"${alls[alls.length-1].title}\", and \"${alls[alls.length-2].title}\"`);
           } else if (alls.length == 1){
-            msg.channel.sendMessage(`Next Up: \"${alls[0].title}\"`);
+            msg.channel.sendMessage(`Next Up: \"${alls[alls.length-1].title}\"`);
           } else {
             msg.channel.sendMessage("This is the last song.");
           }
@@ -135,11 +135,11 @@ function shuffle(msg){
   if (msg) {
     msg.channel.sendMessage("Playlist Shuffled");
     if (alls.length > 2){
-      msg.channel.sendMessage(`Next Up: \"${alls[0].title}\", \"${alls[1].title}\", and \"${alls[2].title}\"`);
+      msg.channel.sendMessage(`Next Up: \"${alls[alls.length-1].title}\", \"${alls[alls.length-2].title}\", and \"${alls[alls.length-3].title}\"`);
     } else if (alls.length == 2){
-      msg.channel.sendMessage(`Next Up: \"${alls[0].title}\", and \"${alls[1].title}\"`);
+      msg.channel.sendMessage(`Next Up: \"${alls[alls.length-1].title}\", and \"${alls[alls.length-2].title}\"`);
     } else if (alls.length == 1){
-      msg.channel.sendMessage(`Next Up: \"${alls[0].title}\"`);
+      msg.channel.sendMessage(`Next Up: \"${alls[alls.length-1].title}\"`);
     } else {
       msg.channel.sendMessage("This is the last song.");
     }
