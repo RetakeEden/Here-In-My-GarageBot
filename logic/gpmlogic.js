@@ -134,6 +134,15 @@ function shuffle(msg){
   alls = alls;
   if (msg) {
     msg.channel.sendMessage("Playlist Shuffled");
+    if (alls.length > 2){
+      msg.channel.sendMessage(`Next Up: \"${alls[0].title}\", \"${alls[1].title}\", and \"${alls[2].title}\"`);
+    } else if (alls.length == 2){
+      msg.channel.sendMessage(`Next Up: \"${alls[0].title}\", and \"${alls[1].title}\"`);
+    } else if (alls.length == 1){
+      msg.channel.sendMessage(`Next Up: \"${alls[0].title}\"`);
+    } else {
+      msg.channel.sendMessage("This is the last song.");
+    }
   }
 }
 
