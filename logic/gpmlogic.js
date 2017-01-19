@@ -110,6 +110,7 @@ function shuffle(msg){
 }
 
 function gskip(msg){
+  alls = null;
   disp.end();
   msg.channel.sendMessage("Skipping current song.");
 }
