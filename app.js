@@ -12,7 +12,7 @@ var discordjs = new Discord.Client();
 
 //Connection
 discordjs.on("ready", () => {
-  console.log('Currently running.');
+  console.log('Startup complete. Awaiting commands.');
 });
 
 //called on every message

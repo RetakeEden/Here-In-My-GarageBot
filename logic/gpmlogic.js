@@ -94,21 +94,17 @@ function playCurr(msg) {
 function clearq(msg){
   new Promise(function(resolve, reject){
     curconn = null;
-    console.log('hit 1 97');
     resolve();
   })
   .then(function(){
     return new Promise(function(resolve, reject){
       disp = null;
       jclear = true;
-      console.log('hit 2 104');
       resolve();
     })
   })
   .then(function(){
-    console.log('hit 3 109');
     disp.end();
-    // playCurr(msg);
   })
   // getAll(msg);
   msg.channel.sendMessage("Disconnecting. Playlist intact.");
