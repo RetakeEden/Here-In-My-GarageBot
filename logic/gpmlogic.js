@@ -93,20 +93,20 @@ function playCurr(msg) {
 
 function clearq(msg){
   new Promise(function(resolve, reject){
-    disp.end();
     curconn = null;
-    console.log('hit 1 98');
+    console.log('hit 1 97');
     resolve();
   })
   .then(function(){
     new Promise(function(resolve, reject){
       disp = null;
       jclear = true;
-      console.log('hit 2 105');
+      console.log('hit 2 104');
+      resolve();
     })
-    resolve();
   })
   .then(function(){
+    disp.end();
     console.log('hit 3 110');
     playCurr(msg);
   })
