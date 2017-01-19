@@ -111,7 +111,7 @@ function clearq(msg){
     // playCurr(msg);
   })
   // getAll(msg);
-  msg.channel.sendMessage("Clearing Queue");
+  msg.channel.sendMessage("Disconnecting. Playlist intact.");
 }
 
 function shuffle(msg){
