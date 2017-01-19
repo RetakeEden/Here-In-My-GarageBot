@@ -106,9 +106,9 @@ function clearq(msg){
     })
   })
   .then(function(){
+    console.log('hit 3 109');
     disp.end();
-    console.log('hit 3 110');
-    playCurr(msg);
+    // playCurr(msg);
   })
   // getAll(msg);
   msg.channel.sendMessage("Clearing Queue");
