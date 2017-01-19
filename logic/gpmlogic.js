@@ -4,7 +4,8 @@ var config = require('../config.json'),
     curconn = null,
     playm = require('playmusic'),
     disp = null,
-    alls = null;
+    alls = null,
+    jclear = false;
 
 
 var pm = new playm();
@@ -41,6 +42,10 @@ function newList(msg){
 }
 
 function playCurr(msg) {
+  if (jclear = true){
+    jclear = false;
+    return;
+  }
   if (alls.length == 0){
     msg.channel.sendMessage("Out of songs.");
     return;
@@ -87,14 +92,20 @@ function playCurr(msg) {
 
 function clearq(msg){
   new Promise(function(resolve, reject){
+    disp.end();
     curconn = null;
-    disp = null;
-    alls = null;
-    resolve(alls);
+    resolve();
   })
-  .then(function(alls){
-    newList(msg);
-  });
+  .then(function(){
+    new Promise(function(resolve, reject){
+      disp = null;
+      jclear = true;
+    })
+    resolve();
+  })
+  .then(function(){
+    playCurr(msg);
+  })
   // getAll(msg);
   msg.channel.sendMessage("Clearing Queue");
 }
