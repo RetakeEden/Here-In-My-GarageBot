@@ -98,7 +98,7 @@ function clearq(msg){
     resolve();
   })
   .then(function(){
-    new Promise(function(resolve, reject){
+    return new Promise(function(resolve, reject){
       disp = null;
       jclear = true;
       console.log('hit 2 104');
