@@ -43,6 +43,7 @@ function newList(msg){
 
 function playCurr(msg) {
   if (jclear = true){
+    console.log("being hit");
     jclear = false;
     return;
   }
