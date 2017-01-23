@@ -36,9 +36,6 @@ discordjs.on('message', msg => {
   //methods
   var umsg = parseLogic.parseCheck(msg)
   //Explains all the available commands and their usage.
-  if (umsg == "NICE" || umsg == "NICE.") {
-    msg.channel.sendMessage("");
-  }
   if (umsg == "TAI HELP"){
     msg.channel.sendMessage("Welcome! Most commands must be prefixed with the correct symbol! The current prefix is: \""+config.info.prefix + "\" All commands are case insensitive.");
     msg.channel.sendMessage("My available commands are:");
@@ -54,7 +51,7 @@ discordjs.on('message', msg => {
     msg.channel.sendMessage("I will clean up any commands that are properly executed (barring a few that make sense to keep) to make sure your channel is spam free, but if you mistype it, I won't know what you mean and it'll stay there forever! (Or until you or an admin delete it)");
   } else if (umsg == "HI TAI" || umsg == "HI TAI!") {
     //replies to the message author personally
-    msg.channel.sendMessage("Hello "+msg.author.username + ". Have you seen my 47 lambourghinis??");
+    msg.channel.sendMessage("Hello " + msg.author.username + ". Have you seen my 47 lambourghinis??");
   } else if (umsg == "TAI PLS GO"){
     //bot leaves the current voice channel
     ylog.clearq(msg);
@@ -64,9 +61,6 @@ discordjs.on('message', msg => {
     //delets the command message (requires bot to be
     //admin) 2s delay
     msg.delete([2000]);
-  } else {
-      return;
-    }
   } else if (umsg == `${config.info.prefix}DMS`) {
     dms = !dms;
   } else if (umsg == `${config.info.prefix}DMJ`) {
