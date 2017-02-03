@@ -129,7 +129,7 @@ function playNext(msg, conn){
       curc.disconnect();
       curc = null;
       disp = null;
-      msg.channel.sendMessage("Queue empty. Disconnecting!")
+      msg.channel.sendMessage("Queue empty. Disconnecting! #DEBUG1")
     }
   }
 }
