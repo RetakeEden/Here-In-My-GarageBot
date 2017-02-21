@@ -4,7 +4,7 @@ var config = require('../config.json'),
     parse = require('./parse.js'),
     search = [],
     searchname = [],
-    curconn = '',
+    curc = '',
     disp = null;
 
 function base(passed, msg){
@@ -65,7 +65,7 @@ function ytpb(msg){
   if (msg.member.voiceChannel){
     msg.member.voiceChannel.join()
     .then(function(connection){
-      curconn = connection;
+      curc = connection;
       if (disp == null){
         msg.channel.sendMessage(`Currently Playing: ${searchname[0]}`);
         if (searchname.length > 1) {
@@ -95,7 +95,7 @@ function ytpb(msg){
 }
 
 function yskip(msg){
-  if(curconn){
+  if(curc){
     msg.channel.sendMessage(`Skipping: ${searchname[0]}`);
     disp.end();
   } else {
@@ -110,8 +110,8 @@ function clearq(msg){
   search = [];
   searchname = [];
   disp = null;
-  if (curconn){
-    curconn.disconnect();
+  if (curc){
+    curc.disconnect();
   }
 }
 
@@ -123,13 +123,13 @@ function playNext(msg, conn){
     searchname.splice(0,1);
     ytpb(msg)
   } else {
-    if (curconn) {
+    if (curc) {
       search.splice(0,1);
       searchname.splice(0,1);
-      curconn.disconnect();
-      curconn = null;
+      curc.disconnect();
+      curc = null;
       disp = null;
-      msg.channel.sendMessage("Queue empty. Disconnecting!")
+      msg.channel.sendMessage("Queue empty. Disconnecting! #DEBUG1")
     }
   }
 }
