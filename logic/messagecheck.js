@@ -67,7 +67,7 @@ function toCall(method, msg){
     gplog.newList(msg);
   } else if (method == `${config.info.prefix}SAD`){
     sadness(msg);
-  } else if (method == `{config.info.prefix}HOW`){
+  } else if (method == `${config.info.prefix}HOW`){
     howcould(msg);
   } else {
     console.log("bad msg tried ", method)
