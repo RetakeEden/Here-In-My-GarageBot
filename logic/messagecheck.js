@@ -121,7 +121,7 @@ function sadness(msg){
     msg.delete([2000]);
     //leaves after 200 seconds
   setTimeout(function(){
-    msg.member.voiceChannel.leave();}, 15000);
+    msg.member.voiceChannel.leave();}, 20000);
   });
 }
 
