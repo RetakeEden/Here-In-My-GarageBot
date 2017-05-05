@@ -22,6 +22,7 @@ var keys = {
   shuffle: `${config.info.prefix}SHUFFLE`,
   gskip: `${config.info.prefix}GSKIP`,
   gnew: `${config.info.prefix}GNEW`,
+  sad: `${config.info.prefix}SAD`
 };
 
 var key = Object.keys(keys);
@@ -63,6 +64,8 @@ function toCall(method, msg){
     gplog.gskip(msg);
   } else if (method == `${config.info.prefix}GNEW`){
     gplog.newList(msg);
+  } else if (method == `${config.info.prefix}SAD`){
+    sadness(msg);
   } else {
     console.log("bad msg tried ", method)
     console.log('Bad message');
@@ -98,6 +101,21 @@ function full(msg){
   .then(function(connection){
     //play the specific file
     connection.playFile('./sounds/fullthing.mp3')
+    //delete the called command message (requires
+    //bot to be admin) 2s delay
+    msg.delete([2000]);
+    //leaves after 200 seconds
+  setTimeout(function(){
+    msg.member.voiceChannel.leave();}, 200000);
+  });
+}
+
+function sadness(msg){
+  //join message authors voice channel
+  msg.member.voiceChannel.join()
+  .then(function(connection){
+    //play the specific file
+    connection.playFile('./sounds/sadness.mp3')
     //delete the called command message (requires
     //bot to be admin) 2s delay
     msg.delete([2000]);
