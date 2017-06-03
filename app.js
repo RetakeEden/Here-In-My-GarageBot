@@ -3,7 +3,7 @@ var config = require('./config.json');
 var parseLogic = require('./logic/parse.js');
 var messageLogic = require('./logic/messagecheck.js');
 var ylog = require('./logic/ytlogic.js');
-var gplog = require('./logic/gpmlogic.js');
+// var gplog = require('./logic/gpmlogic.js');
 var dms = false;
 var dmj = false;
 
