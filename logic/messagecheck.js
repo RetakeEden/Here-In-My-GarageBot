@@ -4,7 +4,7 @@ var glog = require('./glogic.js');
 var ylog = require('./ytlogic.js');
 var plog = require('./palogic.js');
 var rlog = require('./rlogic.js');
-var gplog = require('./gpmlogic.js');
+// var gplog = require('./gpmlogic.js');
 
 //the keys to match the parsed message against
 var keys = {
