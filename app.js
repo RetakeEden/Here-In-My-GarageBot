@@ -17,6 +17,9 @@ discordjs.on("ready", () => {
 
 //called on every message
 discordjs.on('message', msg => {
+  if (msg.author.username == "nik4375"){
+    msg.react(":poop:")
+  }
   if (msg.author.username == "Tai Lopez"){
     return;
   }
