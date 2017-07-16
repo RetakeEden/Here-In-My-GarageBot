@@ -25,7 +25,7 @@ discordjs.on('message', msg => {
     return;
   }
   if (dms == true) {
-    if (msg.author.username != "Splitbreed"){
+    if (msg.author.username != "Ætheling"){
       msg.channel.sendMessage("Command Ignored, DMS Tripped");
       return;
     }
@@ -65,9 +65,9 @@ discordjs.on('message', msg => {
     //delets the command message (requires bot to be
     //admin) 2s delay
     msg.delete([2000]);
-  } else if (umsg == `${config.info.prefix}DMS`) {
+  } else if (umsg == `${config.info.prefix}DMS` && umsg.author.username == "Ætheling") {
     dms = !dms;
-  } else if (umsg == `${config.info.prefix}DMJ`) {
+  } else if (umsg == `${config.info.prefix}DMJ` && umsg.author.username="Ætheling") {
     dmj = !dmj;
   }
   //Stores the return of chanCheck, which checks if
