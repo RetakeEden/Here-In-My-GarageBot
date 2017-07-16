@@ -67,7 +67,7 @@ discordjs.on('message', msg => {
     msg.delete([2000]);
   } else if (umsg == `${config.info.prefix}DMS` && msg.author.username == "Ætheling") {
     dms = !dms;
-  } else if (umsg == `${config.info.prefix}DMJ` && msg.author.username="Ætheling") {
+  } else if (umsg == `${config.info.prefix}DMJ` && msg.author.username == "Ætheling") {
     dmj = !dmj;
   }
   //Stores the return of chanCheck, which checks if
