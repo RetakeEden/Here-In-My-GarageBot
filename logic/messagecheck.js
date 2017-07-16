@@ -35,18 +35,21 @@ function toCall(method, msg, useless, dms){
   if (method == `${config.info.prefix}KNOWLEDGE`){
     if(dms){
       msg.channel.sendMessage("Command Ignored, DMS Tripped");
+      return;
     }
     knowledge(msg);
     //else if the key is knawledge call knawledge
   } else if (method == `${config.info.prefix}KNAWLEDGE`){
     if(dms){
       msg.channel.sendMessage("Command Ignored, DMS Tripped");
+      return;
     }
     knawledge(msg);
     //else if the key is hi call hi
   } else if (method == `${config.info.prefix}FULLTHING`){
     if(dms){
       msg.channel.sendMessage("Command Ignored, DMS Tripped");
+      return;
     }
     full(msg);
     //else if the key is drears call drears (currently damaged mp3
@@ -57,61 +60,73 @@ function toCall(method, msg, useless, dms){
   } else if (method == `${config.info.prefix}GIPHY`){
     if(dms){
       msg.channel.sendMessage("Command Ignored, DMS Tripped");
+      return;
     }
     giphy(gcheck, msg);
   } else if (method == `${config.info.prefix}YT`){
     if(dms){
       msg.channel.sendMessage("Command Ignored, DMS Tripped");
+      return;
     }
     ylog.base(gcheck, msg);
   } else if (method == `${config.info.prefix}QUEUE`){
     if(dms){
       msg.channel.sendMessage("Command Ignored, DMS Tripped");
+      return;
     }
     ylog.queue(msg)
   } else if (method == `${config.info.prefix}YSKIP`){
     if(dms){
       msg.channel.sendMessage("Command Ignored, DMS Tripped");
+      return;
     }
     ylog.yskip(msg);
   } else if (method == `${config.info.prefix}PLOGIN`){
     if(dms){
       msg.channel.sendMessage("Command Ignored, DMS Tripped");
+      return;
     }
     plog.plogin(msg);
   } else if (method == `${config.info.prefix}RNG`){
     if(dms){
       msg.channel.sendMessage("Command Ignored, DMS Tripped");
+      return;
     }
     rlog.rng(msg);
   } else if (method == `${config.info.prefix}PLAY`){
     if(dms){
       msg.channel.sendMessage("Command Ignored, DMS Tripped");
+      return;
     }
     gplog.playCurr(msg);
   } else if (method == `${config.info.prefix}SHUFFLE`){
     if(dms){
       msg.channel.sendMessage("Command Ignored, DMS Tripped");
+      return;
     }
     gplog.shuffle(msg);
   } else if (method == `${config.info.prefix}GSKIP`){
     if(dms){
       msg.channel.sendMessage("Command Ignored, DMS Tripped");
+      return;
     }
     gplog.gskip(msg);
   } else if (method == `${config.info.prefix}GNEW`){
     if(dms){
       msg.channel.sendMessage("Command Ignored, DMS Tripped");
+      return;
     }
     gplog.newList(msg);
   } else if (method == `${config.info.prefix}SAD`){
     if(dms){
       msg.channel.sendMessage("Command Ignored, DMS Tripped");
+      return;
     }
     sadness(msg);
   } else if (method == `${config.info.prefix}HOW`){
     if(dms){
       msg.channel.sendMessage("Command Ignored, DMS Tripped");
+      return;
     }
     howcould(msg);
   } else {
