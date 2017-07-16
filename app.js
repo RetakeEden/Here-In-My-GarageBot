@@ -24,18 +24,6 @@ discordjs.on('message', msg => {
   if (msg.author.username == "Tai Lopez"){
     return;
   }
-  if (dms == true) {
-    if (msg.author.username != "Ætheling"){
-      msg.channel.sendMessage("Command Ignored, DMS Tripped");
-      return;
-    }
-  }
-  if (dmj == true) {
-    if (msg.author.username == "Jay"){
-      msg.channel.sendMessage("No, bad Jay.");
-      return;
-    }
-  }
   //Stores parsed message to be passed to other
   //methods
   var umsg = parseLogic.parseCheck(msg)
@@ -90,7 +78,7 @@ discordjs.on('message', msg => {
       //Takes the returned method key, and passes it
       //with the message json object to the logic
       //function that then calls individual methods
-      messageLogic.toCall(call, msg, discordjs);
+      messageLogic.toCall(call, msg, discordjs, dms);
     }
     //else if they're not in a channel
   } else {
