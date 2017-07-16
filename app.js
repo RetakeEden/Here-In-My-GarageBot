@@ -65,9 +65,9 @@ discordjs.on('message', msg => {
     //delets the command message (requires bot to be
     //admin) 2s delay
     msg.delete([2000]);
-  } else if (umsg == `${config.info.prefix}DMS` && umsg.author.username == "Ætheling") {
+  } else if (umsg == `${config.info.prefix}DMS` && msg.author.username == "Ætheling") {
     dms = !dms;
-  } else if (umsg == `${config.info.prefix}DMJ` && umsg.author.username="Ætheling") {
+  } else if (umsg == `${config.info.prefix}DMJ` && msg.author.username="Ætheling") {
     dmj = !dmj;
   }
   //Stores the return of chanCheck, which checks if
