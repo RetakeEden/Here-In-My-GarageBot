@@ -24,7 +24,8 @@ var keys = {
   gnew: `${config.info.prefix}GNEW`,
   sad: `${config.info.prefix}SAD`,
   how: `${config.info.prefix}HOW`,
-  excited: `${config.info.prefix}EXCITED`
+  excited: `${config.info.prefix}EXCITED`,
+  yes: `${config.info.prefix}YES`
 };
 
 var key = Object.keys(keys);
@@ -136,7 +137,14 @@ function toCall(method, msg, useless, dms){
       return;
     }
     excited(msg);
-  } else {
+  } else if (method ==`${config.info.prefix}YES`){
+    if(dms){
+      msg.channel.sendMessage("Command Ignored, DMS Tripped");
+      return;
+    }
+    yes(msg);
+  }
+  else {
     console.log("bad msg tried ", method)
     console.log('Bad message');
   }
@@ -158,6 +166,20 @@ function knowledge(msg){
     //leaves after 5 seconds
   setTimeout(function(){
     msg.member.voiceChannel.leave();}, 5000);
+  });
+}
+
+function yes(msg){
+  msg.member.voiceChannel.join()
+  .then(function(connection){
+    //play the specific file
+    connection.playFile('./sounds/yesyes.mp3')
+    //delete the called command message (requires
+    //bot to be admin) 2s delay
+    msg.delete([2000]);
+    //leaves after 200 seconds
+  setTimeout(function(){
+    msg.member.voiceChannel.leave();}, 7000);
   });
 }
 
@@ -294,7 +316,7 @@ function returnMethod(n){
   //Rejoin the array into a string
   x = x.join('');
   //checks in keys if a message matches a key value
-  for (var i = 0; i <= 20; i++) {
+  for (var i = 0; i <= 25; i++) {
     if (x == key[i]){
       //Checks if the prefix fits that put into config.json
       if (y != config.info.prefix){
