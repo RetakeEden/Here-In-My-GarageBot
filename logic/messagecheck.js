@@ -25,7 +25,8 @@ var keys = {
   sad: `${config.info.prefix}SAD`,
   how: `${config.info.prefix}HOW`,
   excited: `${config.info.prefix}EXCITED`,
-  yes: `${config.info.prefix}YES`
+  yes: `${config.info.prefix}YES`,
+  fake: `${config.info.prefix}FAKE`
 };
 
 var key = Object.keys(keys);
@@ -131,20 +132,25 @@ function toCall(method, msg, useless, dms){
       return;
     }
     howcould(msg);
-  } else if (method ==`${config.info.prefix}EXCITED`){
+  } else if (method == `${config.info.prefix}EXCITED`){
     if(dms){
       msg.channel.sendMessage("Command Ignored, DMS Tripped");
       return;
     }
     excited(msg);
-  } else if (method ==`${config.info.prefix}YES`){
+  } else if (method == `${config.info.prefix}YES`){
     if(dms){
       msg.channel.sendMessage("Command Ignored, DMS Tripped");
       return;
     }
     yes(msg);
-  }
-  else {
+  } else if (method == `${config.info.prefix}FAKE`){
+    if(dms){
+      msg.channel.sendMessage("Command Ignored, DMS Tripped");
+      return;
+    }
+    fake(msg);
+  } else {
     console.log("bad msg tried ", method)
     console.log('Bad message');
   }
@@ -180,6 +186,21 @@ function yes(msg){
     //leaves after 200 seconds
   setTimeout(function(){
     msg.member.voiceChannel.leave();}, 7000);
+  });
+}
+
+function fake(msg){
+  //join message authors voice channel
+  msg.member.voiceChannel.join()
+  .then(function(connection){
+    //play the specific file
+    connection.playFile('./sounds/fakenews.mp3')
+    //delete the called command message (requires
+    //bot to be admin) 2s delay
+    msg.delete([2000]);
+    //leaves after 200 seconds
+  setTimeout(function(){
+    msg.member.voiceChannel.leave();}, 3000);
   });
 }
 
