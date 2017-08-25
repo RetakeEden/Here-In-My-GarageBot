@@ -3,7 +3,7 @@ var config = require('./config.json');
 var parseLogic = require('./logic/parse.js');
 var messageLogic = require('./logic/messagecheck.js');
 var ylog = require('./logic/ytlogic.js');
-var gplog = require('./logic/gpmlogic.js');
+// var gplog = require('./logic/gpmlogic.js');
 var dms = false;
 var dmj = false;
 
@@ -17,20 +17,12 @@ discordjs.on("ready", () => {
 
 //called on every message
 discordjs.on('message', msg => {
+  if (msg.author.username == "nik4375"){
+    msg.react("💩");
+    return "reacted to nicki";
+  }
   if (msg.author.username == "Tai Lopez"){
     return;
-  }
-  if (dms == true) {
-    if (msg.author.username != "Splitbreed"){
-      msg.channel.sendMessage("Command Ignored, DMS Tripped");
-      return;
-    }
-  }
-  if (dmj == true) {
-    if (msg.author.username == "Jay"){
-      msg.channel.sendMessage("No, bad Jay.");
-      return;
-    }
   }
   //Stores parsed message to be passed to other
   //methods
@@ -55,15 +47,15 @@ discordjs.on('message', msg => {
   } else if (umsg == "TAI PLS GO"){
     //bot leaves the current voice channel
     ylog.clearq(msg);
-    gplog.clearq(msg);
+    // gplog.clearq(msg);
     //if no voice channel, does nothing
     msg.member.voiceChannel.leave();
     //delets the command message (requires bot to be
     //admin) 2s delay
     msg.delete([2000]);
-  } else if (umsg == `${config.info.prefix}DMS`) {
+  } else if (umsg == `${config.info.prefix}DMS` && msg.author.username == "Ætheling") {
     dms = !dms;
-  } else if (umsg == `${config.info.prefix}DMJ`) {
+  } else if (umsg == `${config.info.prefix}DMJ` && msg.author.username == "Ætheling") {
     dmj = !dmj;
   }
   //Stores the return of chanCheck, which checks if
@@ -86,7 +78,7 @@ discordjs.on('message', msg => {
       //Takes the returned method key, and passes it
       //with the message json object to the logic
       //function that then calls individual methods
-      messageLogic.toCall(call, msg, discordjs);
+      messageLogic.toCall(call, msg, discordjs, dms);
     }
     //else if they're not in a channel
   } else {

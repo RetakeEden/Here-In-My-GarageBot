@@ -59,7 +59,7 @@ function queue(msg){
 }
 
 function ytpb(msg){
-  const streamOptions = { seek: 0, volume: 1 };
+  const streamOptions = { seek: 0, volume: .5 };
   var stream = ytdl(`https://www.youtube.com/watch?v=${search[0]}`, {filter: "audioonly"});
 
   if (msg.member.voiceChannel){
